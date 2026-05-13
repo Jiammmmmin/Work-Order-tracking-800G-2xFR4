@@ -1,0 +1,936 @@
+MES Schema Exploration — 2026-05-06 16:29:57
+Server : 172.18.0.113  Database: MES
+Sample WO  : 120052817
+Sample LOT : 12005281702
+==========================================================================================
+
+==========================================================================================
+  TABLE : v_MasterWOInfo
+==========================================================================================
+  Row count (filtered): 1
+  (view — column list from runtime description below)
+
+  SAMPLE DATA (up to 5 rows, WHERE WO = '120052817'):
+  WO        | ROUTE      | WIGROUP | DEVICETYPE | LOTTYPE | DEVICE       | MATERIALNO   | PN                           | WOSTATUS | FINISHED | WOQTY     | WIPQTY | REPAIRQTY | SCRAPQTY | INVQTY | REWORKQTY | REUSEQTY | CHANGEQTY | CREATEDATE  | STARTDATE  | SCHEDULEDATE
+  ----------+------------+---------+------------+---------+--------------+--------------+------------------------------+----------+----------+-----------+--------+-----------+----------+--------+-----------+----------+-----------+-------------+------------+-------------
+  120052817 | DR8COS0001 | 1       | COS        | Z102    | 300101001611 | 300101001611 | 800G 2xFR4-Siph COS_DFB-1311 | Created  | N        | 122.00000 | 120    | 0         | 2        | 0      | 0         | 0        | 0         | 2026/04/22  | 2026/04/25 | 2026/04/29  
+
+
+==========================================================================================
+  TABLE : MES_WPC_WO
+==========================================================================================
+  Row count (filtered): 1
+
+  COLUMNS (from INFORMATION_SCHEMA):
+    #  Column Name                          SQL Type                   Nullable
+  ---  -----------------------------------  -------------------------  --------
+    1  WPC_WO_SID                           nvarchar(100)              NO
+    2  WO                                   nvarchar(100)              NO
+    3  SO                                   nvarchar(100)              YES
+    4  PO                                   nvarchar(100)              YES
+    5  BONDED                               char(1)                    YES
+    6  BONDEDNO                             nvarchar(100)              YES
+    7  LOTTYPE                              nvarchar(100)              YES
+    8  QUANTITY                             numeric(13,5)              YES
+    9  UNIT                                 nvarchar(100)              YES
+   10  SQUANTITY                            numeric(13,5)              YES
+   11  SUNIT                                nvarchar(100)              YES
+   12  CUSTOMER                             nvarchar(100)              YES
+   13  CUSTLOT                              nvarchar(100)              YES
+   14  DEVICE                               nvarchar(100)              YES
+   15  DEVICEVER                            float(53,None)             YES
+   16  PRODUCT                              nvarchar(100)              YES
+   17  PRODVER                              float(53,None)             YES
+   18  ROUTE                                nvarchar(100)              YES
+   19  ROUTEVER                             float(53,None)             YES
+   20  PRIORITY                             float(53,None)             YES
+   21  CRITICAL                             nvarchar(100)              YES
+   22  OWNER                                nvarchar(100)              YES
+   23  COMMITDATE                           nvarchar(100)              YES
+   24  SCHEDULEDATE                         nvarchar(100)              YES
+   25  DUEDATE                              nvarchar(100)              YES
+   26  USERID                               nvarchar(100)              YES
+   27  UPDATETIME                           nvarchar(100)              YES
+   28  TAG                                  float(53,None)             YES
+   29  FLAG                                 nvarchar(100)              YES
+   30  TEMPLATE                             nvarchar(100)              YES
+   31  RELEASEQTY                           numeric(13,5)              YES
+   32  CREATETIME                           nvarchar(100)              YES
+   33  DESCR                                nvarchar(4000)             YES
+   34  MMSTIME                              nvarchar(100)              YES
+   35  RMSTIME                              nvarchar(100)              YES
+   36  EDCTIME                              nvarchar(100)              YES
+   37  TOOLTIME                             nvarchar(100)              YES
+   38  FACTORY                              nvarchar(100)              YES
+   39  STORAGE                              nvarchar(100)              YES
+   40  STO                                  nvarchar(100)              YES
+   41  LOEKZ                                nvarchar(100)              YES
+   42  IDAT2                                nvarchar(100)              YES
+   43  BATCHID                              nvarchar(100)              YES
+   44  MAKTX                                nvarchar(100)              YES
+   45  STARTDATE                            nvarchar(100)              YES
+   46  WIGROUP                              nvarchar(100)              YES
+   47  DEVICETYPE                           nvarchar(100)              YES
+   48  PICKQTY                              numeric(18,0)              YES
+   49  BATCHFLAG                            char(1)                    YES
+   50  PLNNR                                nvarchar(100)              YES
+   51  PLNAL                                nvarchar(100)              YES
+   52  IFC                                  nvarchar(50)               NO
+   53  CONFIRMATION                         char(1)                    YES
+   54  SOLDTOPARTY                          nvarchar(10)               YES
+   55  CABLETYPE                            nvarchar(40)               YES
+   56  NAME1                                nvarchar(200)              YES
+   57  CITY1                                nvarchar(200)              YES
+   58  POSTCODE1                            nvarchar(20)               YES
+   59  STREET                               nvarchar(200)              YES
+   60  SHIPTOPARTY                          nvarchar(10)               YES
+   61  PR                                   nvarchar(50)               YES
+   62  Fevor                                varchar(100)               YES
+
+  SAMPLE DATA (up to 5 rows, WHERE WO = '120052817'):
+  WPC_WO_SID           | WO        | SO   | PO   | BONDED | BONDEDNO | LOTTYPE | QUANTITY  | UNIT | SQUANTITY | SUNIT | CUSTOMER | CUSTLOT | DEVICE       | DEVICEVER | PRODUCT | PRODVER | ROUTE      | ROUTEVER | PRIORITY | CRITICAL | OWNER | COMMITDATE | SCHEDULEDATE | DUEDATE | USERID | UPDATETIME          | TAG     | FLAG    | TEMPLATE | RELEASEQTY | CREATETIME          | DESCR        | MMSTIME             | RMSTIME             | EDCTIME             | TOOLTIME            | FACTORY | STORAGE | STO  | LOEKZ | IDAT2 | BATCHID | MAKTX                        | STARTDATE  | WIGROUP | DEVICETYPE | PICKQTY | BATCHFLAG | PLNNR    | PLNAL | IFC | CONFIRMATION | SOLDTOPARTY | CABLETYPE | NAME1 | CITY1 | POSTCODE1 | STREET | SHIPTOPARTY | PR   | Fevor
+  ---------------------+-----------+------+------+--------+----------+---------+-----------+------+-----------+-------+----------+---------+--------------+-----------+---------+---------+------------+----------+----------+----------+-------+------------+--------------+---------+--------+---------------------+---------+---------+----------+------------+---------------------+--------------+---------------------+---------------------+---------------------+---------------------+---------+---------+------+-------+-------+---------+------------------------------+------------+---------+------------+---------+-----------+----------+-------+-----+--------------+-------------+-----------+-------+-------+-----------+--------+-------------+------+------
+  A2026042211464770844 | 120052817 | NULL | NULL | NULL   | NULL     | Z102    | 122.00000 | PCS  | 0.00000   | NULL  | NULL     | NULL    | 300101001611 | 1.0       | 3001    | 1.0     | DR8COS0001 | 5.0      | 1.0      | Normal   | SAP   | NULL       | 2026/04/29   | NULL    | C1188  | 2026/04/24 13:49:05 | 58564.0 | Created | NULL     | 122.00000  | 2026/04/22 11:46:47 | 800G_DR8_COS | 2026/04/24 11:22:28 | 2026/04/24 11:22:28 | 2026/04/24 11:22:28 | 2026/04/24 11:22:28 | 1200    | 1280    | NULL | NULL  | NULL  | AOI     | 800G 2xFR4-Siph COS_DFB-1311 | 2026/04/25 | 1       | COS        | 122     | X         | DR8COS00 | 01    | SAP | N            | NULL        | NULL      | NULL  | NULL  | NULL      | NULL   | NULL        | NULL | NULL 
+
+
+==========================================================================================
+  TABLE : AOI_WO_RUNCARD
+==========================================================================================
+  Row count (filtered): 2
+
+  COLUMNS (from INFORMATION_SCHEMA):
+    #  Column Name                          SQL Type                   Nullable
+  ---  -----------------------------------  -------------------------  --------
+    1  WO_RUNCARD_SID                       nvarchar(100)              NO
+    2  WPC_WO_SID                           nvarchar(100)              YES
+    3  RUNCARD                              nvarchar(100)              YES
+    4  PICKTYPE                             nvarchar(100)              YES
+    5  QUANTITY                             numeric(18,0)              YES
+    6  STATUS                               nvarchar(100)              YES
+    7  STARTDATE                            nvarchar(100)              YES
+    8  ENDDATE                              nvarchar(100)              YES
+    9  NOTES                                nvarchar(-1)               YES
+   10  CREATED                              char(1)                    YES
+   11  TAG                                  numeric(18,0)              YES
+   12  USERID                               nvarchar(100)              YES
+   13  UPDATETIME                           nvarchar(100)              YES
+   14  CREATEUSER                           nvarchar(100)              YES
+   15  CREATETIME                           nvarchar(100)              YES
+   16  ROHS_66                              nvarchar(100)              YES
+   17  MATERIALNO                           nvarchar(100)              YES
+
+  SAMPLE DATA (up to 5 rows, WHERE WPC_WO_SID = 'A2026042211464770844'):
+  WO_RUNCARD_SID       | WPC_WO_SID           | RUNCARD     | PICKTYPE      | QUANTITY | STATUS  | STARTDATE  | ENDDATE    | NOTES                          | CREATED | TAG   | USERID  | UPDATETIME          | CREATEUSER | CREATETIME          | ROHS_66 | MATERIALNO
+  ---------------------+----------------------+-------------+---------------+----------+---------+------------+------------+--------------------------------+---------+-------+---------+---------------------+------------+---------------------+---------+-----------
+  A2026042214243140000 | A2026042211464770844 | 12005281701 | PickupByBatch | 120      | Deleted | 2026/04/25 | 2026/04/29 | "Inv: WO to Kevin Cantor. Regu | N       | 27355 | AH60735 | 2026/04/24 11:20:28 | AH60735    | 2026/04/22 14:24:33 | N       | NULL      
+  A2026042411225934532 | A2026042211464770844 | 12005281702 | PickupByBatch | 122      | WIP     | 2026/04/25 | 2026/04/29 | "Inv: WO to Kevin Cantor. Regu | Y       | 28125 | AH60139 | 2026/04/24 16:09:21 | AH60735    | 2026/04/24 11:23:01 | N       | NULL      
+
+
+==========================================================================================
+  TABLE : MES_WIP_LOT
+==========================================================================================
+  Row count (filtered): 5
+
+  COLUMNS (from INFORMATION_SCHEMA):
+    #  Column Name                          SQL Type                   Nullable
+  ---  -----------------------------------  -------------------------  --------
+    1  WIP_LOT_SID                          nvarchar(100)              NO
+    2  LOT                                  nvarchar(100)              NO
+    3  OPERATION                            nvarchar(100)              YES
+    4  STATUS                               nvarchar(100)              YES
+    5  QUANTITY                             numeric(13,0)              YES
+    6  UNIT                                 nvarchar(100)              YES
+    7  RESOURCENAME                         nvarchar(100)              YES
+    8  TOOL                                 nvarchar(100)              YES
+    9  RECIPE                               nvarchar(100)              YES
+   10  SUBEQP                               nvarchar(100)              YES
+   11  OPERATIONNO                          nvarchar(100)              YES
+   12  OPERATIONSEQ                         nvarchar(100)              YES
+   13  USERID                               nvarchar(100)              YES
+   14  LASTTRANSTIME                        nvarchar(100)              YES
+   15  WIP_HIST_SID                         nvarchar(100)              YES
+   16  REWORKFLAG                           char(1)                    YES
+   17  REWORKCOUNT                          numeric(38,0)              YES
+   18  LOCATION                             nvarchar(100)              YES
+   19  PRODUCT                              nvarchar(100)              YES
+   20  PRODVER                              float(53,None)             YES
+   21  ROUTE                                nvarchar(100)              YES
+   22  ROUTEVER                             float(53,None)             YES
+   23  LOTTYPE                              nvarchar(100)              YES
+   24  CUSTOMER                             nvarchar(100)              YES
+   25  DEVICE                               nvarchar(100)              YES
+   26  DEVICEVER                            float(53,None)             YES
+   27  SQUANTITY                            numeric(13,5)              YES
+   28  SUNIT                                nvarchar(100)              YES
+   29  GOODDIE                              numeric(13,5)              YES
+   30  FAILDIE                              numeric(13,5)              YES
+   31  CUSTLOT                              nvarchar(100)              YES
+   32  FABLOT                               nvarchar(100)              YES
+   33  FABCODE                              nvarchar(100)              YES
+   34  PRIORITY                             float(53,None)             YES
+   35  CRITICAL                             nvarchar(100)              YES
+   36  OWNER                                nvarchar(100)              YES
+   37  PO                                   nvarchar(100)              YES
+   38  WO                                   nvarchar(100)              YES
+   39  WOSEQ                                nvarchar(100)              YES
+   40  BONDED                               char(1)                    YES
+   41  BONDEDNO                             nvarchar(100)              YES
+   42  STARTQUANTITY                        numeric(13,5)              YES
+   43  STARTCOMPQTY                         numeric(13,5)              YES
+   44  COMMITDATE                           nvarchar(100)              YES
+   45  SCHEDULEDATE                         nvarchar(100)              YES
+   46  DUEDATE                              nvarchar(100)              YES
+   47  LASTOUTTIME                          nvarchar(100)              YES
+   48  CREATETIME                           nvarchar(100)              YES
+   49  STARTTIME                            nvarchar(100)              YES
+   50  SUBSTATUS                            nvarchar(100)              YES
+   51  PREVIOUSRULE                         nvarchar(100)              YES
+   52  CURRENTRULE                          nvarchar(100)              YES
+   53  CURRENTRULESEQ                       float(53,None)             YES
+   54  LASTINTIME                           nvarchar(100)              YES
+   55  SITE                                 nvarchar(100)              YES
+   56  DIVISION                             nvarchar(100)              YES
+   57  HOLDFLAG                             char(1)                    YES
+   58  TAG                                  float(53,None)             YES
+   59  PREVIOUSSTATUS                       nvarchar(100)              YES
+   60  LASTLOTHISTSEQ                       float(53,None)             YES
+   61  PREVIOUSRULESEQ                      float(53,None)             YES
+   62  USERDEFINECOL01                      nvarchar(100)              YES
+   63  USERDEFINECOL02                      nvarchar(100)              YES
+   64  USERDEFINECOL03                      nvarchar(100)              YES
+   65  USERDEFINECOL04                      nvarchar(100)              YES
+   66  USERDEFINECOL05                      nvarchar(100)              YES
+   67  USERDEFINECOL06                      nvarchar(100)              YES
+   68  USERDEFINECOL07                      nvarchar(100)              YES
+   69  USERDEFINECOL08                      nvarchar(100)              YES
+   70  USERDEFINECOL09                      nvarchar(100)              YES
+   71  USERDEFINECOL10                      nvarchar(100)              YES
+   72  USERDEFINECOL11                      nvarchar(100)              YES
+   73  USERDEFINECOL12                      nvarchar(100)              YES
+   74  USERDEFINECOL13                      nvarchar(100)              YES
+   75  USERDEFINECOL14                      nvarchar(100)              YES
+   76  USERDEFINECOL15                      nvarchar(100)              YES
+   77  TQUANTITY                            numeric(13,5)              YES
+   78  TUNIT                                nvarchar(100)              YES
+   79  DISPATCHFLAG                         char(1)                    YES
+   80  USERDEFINECOL16                      nvarchar(100)              YES
+   81  USERDEFINECOL17                      nvarchar(100)              YES
+   82  USERDEFINECOL18                      nvarchar(100)              YES
+   83  USERDEFINECOL19                      nvarchar(100)              YES
+   84  USERDEFINECOL20                      nvarchar(100)              YES
+   85  TRANS_DATE                           float(53,None)             YES
+   86  TRANS_TIME                           float(53,None)             YES
+   87  REWORKREASON                         nvarchar(100)              YES
+   88  REWORKDESCR                          nvarchar(4000)             YES
+   89  HOLDREASON                           nvarchar(100)              YES
+   90  HOLDDESCR                            nvarchar(4000)             YES
+   91  RELEASEQTY                           numeric(13,5)              YES
+   92  DISPATCHSTAGE                        nvarchar(100)              YES
+   93  FACTORY                              nvarchar(100)              YES
+   94  MMSTIME                              nvarchar(100)              YES
+   95  RMSTIME                              nvarchar(100)              YES
+   96  EDCTIME                              nvarchar(100)              YES
+   97  TOOLTIME                             nvarchar(100)              YES
+   98  PACKTYPE                             nvarchar(100)              YES
+   99  WAIVE                                nvarchar(100)              YES
+  100  RUNBASE                              nvarchar(100)              YES
+  101  FAIFLAG                              nvarchar(100)              YES
+  102  CARRIER                              nvarchar(100)              YES
+  103  INVNO                                nvarchar(100)              YES
+  104  REPAIRCOUNT                          numeric(38,0)              YES
+  105  REPAIRFLAG                           char(1)                    YES
+  106  PICKUPNO                             nvarchar(100)              YES
+  107  RETURNMAT                            char(1)                    YES
+  108  MOVEFLAG                             nvarchar(1)                YES
+  109  OPINTERCHKINTIME                     nvarchar(200)              YES
+  110  INTERSTARTOPERSEQ                    nvarchar(200)              YES
+  111  GELPAK                               nvarchar(100)              YES
+  112  BAR                                  nvarchar(100)              YES
+  113  UTRAY                                nvarchar(100)              YES
+  114  PACKBATCH                            varchar(50)                YES
+  115  BURNTOOL                             varchar(50)                YES
+
+  SAMPLE DATA (up to 5 rows, WHERE WO = '120052817'):
+  WIP_LOT_SID          | LOT            | OPERATION        | STATUS | QUANTITY | UNIT | RESOURCENAME | TOOL | RECIPE | SUBEQP | OPERATIONNO | OPERATIONSEQ | USERID | LASTTRANSTIME       | WIP_HIST_SID         | REWORKFLAG | REWORKCOUNT | LOCATION | PRODUCT | PRODVER | ROUTE      | ROUTEVER | LOTTYPE | CUSTOMER | DEVICE       | DEVICEVER | SQUANTITY | SUNIT | GOODDIE | FAILDIE | CUSTLOT | FABLOT | FABCODE | PRIORITY | CRITICAL | OWNER | PO   | WO        | WOSEQ | BONDED | BONDEDNO | STARTQUANTITY | STARTCOMPQTY | COMMITDATE | SCHEDULEDATE | DUEDATE | LASTOUTTIME         | CREATETIME          | STARTTIME           | SUBSTATUS | PREVIOUSRULE   | CURRENTRULE     | CURRENTRULESEQ | LASTINTIME          | SITE | DIVISION | HOLDFLAG | TAG     | PREVIOUSSTATUS | LASTLOTHISTSEQ | PREVIOUSRULESEQ | USERDEFINECOL01 | USERDEFINECOL02 | USERDEFINECOL03 | USERDEFINECOL04 | USERDEFINECOL05 | USERDEFINECOL06 | USERDEFINECOL07 | USERDEFINECOL08 | USERDEFINECOL09 | USERDEFINECOL10 | USERDEFINECOL11 | USERDEFINECOL12 | USERDEFINECOL13 | USERDEFINECOL14 | USERDEFINECOL15 | TQUANTITY | TUNIT | DISPATCHFLAG | USERDEFINECOL16 | USERDEFINECOL17 | USERDEFINECOL18 | USERDEFINECOL19 | USERDEFINECOL20 | TRANS_DATE | TRANS_TIME | REWORKREASON | REWORKDESCR | HOLDREASON | HOLDDESCR | RELEASEQTY | DISPATCHSTAGE | FACTORY | MMSTIME             | RMSTIME             | EDCTIME             | TOOLTIME            | PACKTYPE | WAIVE | RUNBASE | FAIFLAG | CARRIER   | INVNO | REPAIRCOUNT | REPAIRFLAG | PICKUPNO    | RETURNMAT | MOVEFLAG | OPINTERCHKINTIME | INTERSTARTOPERSEQ | GELPAK | BAR      | UTRAY     | PACKBATCH | BURNTOOL
+  ---------------------+----------------+------------------+--------+----------+------+--------------+------+--------+--------+-------------+--------------+--------+---------------------+----------------------+------------+-------------+----------+---------+---------+------------+----------+---------+----------+--------------+-----------+-----------+-------+---------+---------+---------+--------+---------+----------+----------+-------+------+-----------+-------+--------+----------+---------------+--------------+------------+--------------+---------+---------------------+---------------------+---------------------+-----------+----------------+-----------------+----------------+---------------------+------+----------+----------+---------+----------------+----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------+-------+--------------+-----------------+-----------------+-----------------+-----------------+-----------------+------------+------------+--------------+-------------+------------+-----------+------------+---------------+---------+---------------------+---------------------+---------------------+---------------------+----------+-------+---------+---------+-----------+-------+-------------+------------+-------------+-----------+----------+------------------+-------------------+--------+----------+-----------+-----------+---------
+  A2026042413490658537 | 12005281702    | COS_Burn-in_Test | Run    | 24       | PCS  | COSBurnin2   | NULL | NULL   | NULL   | NULL        | 007          | C2340  | 2026/05/05 22:53:57 | A2026050522535757664 | N          | 0           | NULL     | 3001    | 1.0     | DR8COS0001 | 5.0      | Z102    | NULL     | 300101001611 | 1.0       | 0.00000   | NULL  | NULL    | NULL    | NULL    | NULL   | NULL    | 1.0      | Normal   | SAP   | NULL | 120052817 | NULL  | NULL   | NULL     | 122.00000     | 0.00000      | NULL       | 2026/04/29   | NULL    | 2026/05/05 22:53:56 | 2026/04/24 13:49:06 | 2026/04/24 16:09:21 | In        | LabViewCheckIn | LabViewCheckOut | 2.0            | 2026/05/05 22:53:57 | NULL | NULL     | N        | 57669.0 | Wait           | 22439397.0     | 1.0             | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | LINE            | NULL            | NULL            | UPF-00122       | NULL            | NULL            | NULL            | NULL            | NULL      | NULL  | N            | NULL            | NULL            | NULL            | NULL            | NULL            | 20260505.0 | 225357.0   | NULL         | NULL        | NULL       | NULL      | 0.00000    | Normal        | 1200    | 2026/04/24 11:22:28 | 2026/04/24 11:22:28 | 2026/04/24 11:22:28 | 2026/04/24 11:22:28 | Default  | NULL  | Lot     | N       | BID-00111 | NULL  | 0           | N          | 12005281702 | NULL      | NULL     | NULL             | NULL              | NULL   | FB-00230 | BID-00111 | NULL      | NULL    
+  A2026050514442367691 | 12005281702-02 | COS_Burn-in_Test | Run    | 24       | PCS  | COSBurnin2   | NULL | NULL   | NULL   | NULL        | 007          | C2340  | 2026/05/05 23:10:56 | A2026050523105603191 | N          | 0           | NULL     | 3001    | 1.0     | DR8COS0001 | 5.0      | Z102    | NULL     | 300101001611 | 1.0       | 0.00000   | NULL  | NULL    | NULL    | NULL    | NULL   | NULL    | 1.0      | Normal   | SAP   | NULL | 120052817 | NULL  | NULL   | NULL     | 24.00000      | 0.00000      | NULL       | 2026/04/29   | NULL    | 2026/05/05 23:10:54 | 2026/05/05 14:44:23 | 2026/05/05 14:44:23 | In        | LabViewCheckIn | LabViewCheckOut | 2.0            | 2026/05/05 23:10:56 | NULL | NULL     | N        | 3197.0  | Wait           | 134.0          | 1.0             | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | LINE            | NULL            | NULL            | UPF-00154       | NULL            | NULL            | NULL            | NULL            | NULL      | NULL  | N            | NULL            | NULL            | NULL            | NULL            | NULL            | 20260505.0 | 231056.0   | NULL         | NULL        | NULL       | NULL      | 0.00000    | Normal        | 1200    | 2026/04/24 11:22:28 | 2026/04/24 11:22:28 | 2026/04/24 11:22:28 | 2026/04/24 11:22:28 | Default  | NULL  | Lot     | N       | BID-00107 | NULL  | 0           | N          | 12005281702 | NULL      | NULL     | NULL             | NULL              | NULL   | FB-00212 | BID-00107 | NULL      | NULL    
+  A2026050515410304191 | 12005281702-03 | COS_Burn-in_Test | Run    | 24       | PCS  | COSBurnin2   | NULL | NULL   | NULL   | NULL        | 007          | C2340  | 2026/05/05 23:10:56 | A2026050523105603180 | N          | 0           | NULL     | 3001    | 1.0     | DR8COS0001 | 5.0      | Z102    | NULL     | 300101001611 | 1.0       | 0.00000   | NULL  | NULL    | NULL    | NULL    | NULL   | NULL    | 1.0      | Normal   | SAP   | NULL | 120052817 | NULL  | NULL   | NULL     | 24.00000      | 0.00000      | NULL       | 2026/04/29   | NULL    | 2026/05/05 23:10:53 | 2026/05/05 15:41:03 | 2026/05/05 15:41:03 | In        | LabViewCheckIn | LabViewCheckOut | 2.0            | 2026/05/05 23:10:56 | NULL | NULL     | N        | 3185.0  | Wait           | 134.0          | 1.0             | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | LINE            | NULL            | NULL            | UPF-00111       | NULL            | NULL            | NULL            | NULL            | NULL      | NULL  | N            | NULL            | NULL            | NULL            | NULL            | NULL            | 20260505.0 | 231056.0   | NULL         | NULL        | NULL       | NULL      | 0.00000    | Normal        | 1200    | 2026/04/24 11:22:28 | 2026/04/24 11:22:28 | 2026/04/24 11:22:28 | 2026/04/24 11:22:28 | Default  | NULL  | Lot     | N       | BID-00107 | NULL  | 0           | N          | 12005281702 | NULL      | NULL     | NULL             | NULL              | NULL   | FB-00045 | BID-00107 | NULL      | NULL    
+  A2026050516112724463 | 12005281702-04 | COS_Burn-in_Test | Run    | 24       | PCS  | COSBurnin2   | NULL | NULL   | NULL   | NULL        | 007          | C2340  | 2026/05/05 23:12:22 | A2026050523122212316 | N          | 0           | NULL     | 3001    | 1.0     | DR8COS0001 | 5.0      | Z102    | NULL     | 300101001611 | 1.0       | 0.00000   | NULL  | NULL    | NULL    | NULL    | NULL   | NULL    | 1.0      | Normal   | SAP   | NULL | 120052817 | NULL  | NULL   | NULL     | 24.00000      | 0.00000      | NULL       | 2026/04/29   | NULL    | 2026/05/05 23:12:21 | 2026/05/05 16:11:27 | 2026/05/05 16:11:27 | In        | LabViewCheckIn | LabViewCheckOut | 2.0            | 2026/05/05 23:12:22 | NULL | NULL     | N        | 12321.0 | Wait           | 134.0          | 1.0             | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | LINE            | NULL            | NULL            | UPF-00149       | NULL            | NULL            | NULL            | NULL            | NULL      | NULL  | N            | NULL            | NULL            | NULL            | NULL            | NULL            | 20260505.0 | 231222.0   | NULL         | NULL        | NULL       | NULL      | 0.00000    | Normal        | 1200    | 2026/04/24 11:22:28 | 2026/04/24 11:22:28 | 2026/04/24 11:22:28 | 2026/04/24 11:22:28 | Default  | NULL  | Lot     | N       | BID-00101 | NULL  | 0           | N          | 12005281702 | NULL      | NULL     | NULL             | NULL              | NULL   | FB-00257 | BID-00101 | NULL      | NULL    
+  A2026050516505462175 | 12005281702-05 | COS_Burn-in_Test | Run    | 24       | PCS  | COSBurnin2   | NULL | NULL   | NULL   | NULL        | 007          | C2340  | 2026/05/05 23:12:21 | A2026050523122112305 | N          | 0           | NULL     | 3001    | 1.0     | DR8COS0001 | 5.0      | Z102    | NULL     | 300101001611 | 1.0       | 0.00000   | NULL  | NULL    | NULL    | NULL    | NULL   | NULL    | 1.0      | Normal   | SAP   | NULL | 120052817 | NULL  | NULL   | NULL     | 24.00000      | 0.00000      | NULL       | 2026/04/29   | NULL    | 2026/05/05 23:12:11 | 2026/05/05 16:50:54 | 2026/05/05 16:50:54 | In        | LabViewCheckIn | LabViewCheckOut | 2.0            | 2026/05/05 23:12:21 | NULL | NULL     | N        | 12310.0 | Wait           | 134.0          | 1.0             | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | LINE            | NULL            | NULL            | UPF-00124       | NULL            | NULL            | NULL            | NULL            | NULL      | NULL  | N            | NULL            | NULL            | NULL            | NULL            | NULL            | 20260505.0 | 231221.0   | NULL         | NULL        | NULL       | NULL      | 0.00000    | Normal        | 1200    | 2026/04/24 11:22:28 | 2026/04/24 11:22:28 | 2026/04/24 11:22:28 | 2026/04/24 11:22:28 | Default  | NULL  | Lot     | N       | BID-00101 | NULL  | 0           | N          | 12005281702 | NULL      | NULL     | NULL             | NULL              | NULL   | FB-00251 | BID-00101 | NULL      | NULL    
+
+
+==========================================================================================
+  TABLE : MES_WIP_LOT_NONACTIVE
+==========================================================================================
+  Row count (filtered): 1
+
+  COLUMNS (from INFORMATION_SCHEMA):
+    #  Column Name                          SQL Type                   Nullable
+  ---  -----------------------------------  -------------------------  --------
+    1  WIP_LOT_SID                          nvarchar(100)              NO
+    2  LOT                                  nvarchar(100)              YES
+    3  OPERATION                            nvarchar(100)              YES
+    4  STATUS                               nvarchar(100)              YES
+    5  QUANTITY                             numeric(13,0)              YES
+    6  UNIT                                 nvarchar(100)              YES
+    7  RESOURCENAME                         nvarchar(100)              YES
+    8  TOOL                                 nvarchar(100)              YES
+    9  RECIPE                               nvarchar(100)              YES
+   10  SUBEQP                               nvarchar(100)              YES
+   11  OPERATIONNO                          nvarchar(100)              YES
+   12  OPERATIONSEQ                         nvarchar(100)              YES
+   13  USERID                               nvarchar(100)              YES
+   14  LASTTRANSTIME                        nvarchar(100)              YES
+   15  WIP_HIST_SID                         nvarchar(100)              YES
+   16  REWORKFLAG                           char(1)                    YES
+   17  REWORKCOUNT                          numeric(38,0)              YES
+   18  LOCATION                             nvarchar(100)              YES
+   19  PRODUCT                              nvarchar(100)              YES
+   20  PRODVER                              float(53,None)             YES
+   21  ROUTE                                nvarchar(100)              YES
+   22  ROUTEVER                             float(53,None)             YES
+   23  LOTTYPE                              nvarchar(100)              YES
+   24  CUSTOMER                             nvarchar(100)              YES
+   25  DEVICE                               nvarchar(100)              YES
+   26  DEVICEVER                            float(53,None)             YES
+   27  SQUANTITY                            numeric(13,5)              YES
+   28  SUNIT                                nvarchar(100)              YES
+   29  GOODDIE                              numeric(13,5)              YES
+   30  FAILDIE                              numeric(13,5)              YES
+   31  CUSTLOT                              nvarchar(100)              YES
+   32  FABLOT                               nvarchar(100)              YES
+   33  FABCODE                              nvarchar(100)              YES
+   34  PRIORITY                             float(53,None)             YES
+   35  CRITICAL                             nvarchar(100)              YES
+   36  OWNER                                nvarchar(100)              YES
+   37  PO                                   nvarchar(100)              YES
+   38  WO                                   nvarchar(100)              YES
+   39  WOSEQ                                nvarchar(100)              YES
+   40  BONDED                               char(1)                    YES
+   41  BONDEDNO                             nvarchar(100)              YES
+   42  STARTQUANTITY                        numeric(13,5)              YES
+   43  STARTCOMPQTY                         numeric(13,5)              YES
+   44  COMMITDATE                           nvarchar(100)              YES
+   45  SCHEDULEDATE                         nvarchar(100)              YES
+   46  DUEDATE                              nvarchar(100)              YES
+   47  LASTOUTTIME                          nvarchar(100)              YES
+   48  CREATETIME                           nvarchar(100)              YES
+   49  STARTTIME                            nvarchar(100)              YES
+   50  SUBSTATUS                            nvarchar(100)              YES
+   51  PREVIOUSRULE                         nvarchar(100)              YES
+   52  CURRENTRULE                          nvarchar(100)              YES
+   53  CURRENTRULESEQ                       float(53,None)             YES
+   54  LASTINTIME                           nvarchar(100)              YES
+   55  SITE                                 nvarchar(100)              YES
+   56  DIVISION                             nvarchar(100)              YES
+   57  HOLDFLAG                             char(1)                    YES
+   58  TAG                                  float(53,None)             YES
+   59  PREVIOUSSTATUS                       nvarchar(100)              YES
+   60  LASTLOTHISTSEQ                       float(53,None)             YES
+   61  PREVIOUSRULESEQ                      float(53,None)             YES
+   62  USERDEFINECOL01                      nvarchar(100)              YES
+   63  USERDEFINECOL02                      nvarchar(100)              YES
+   64  USERDEFINECOL03                      nvarchar(100)              YES
+   65  USERDEFINECOL04                      nvarchar(100)              YES
+   66  USERDEFINECOL05                      nvarchar(100)              YES
+   67  USERDEFINECOL06                      nvarchar(100)              YES
+   68  USERDEFINECOL07                      nvarchar(100)              YES
+   69  USERDEFINECOL08                      nvarchar(100)              YES
+   70  USERDEFINECOL09                      nvarchar(100)              YES
+   71  USERDEFINECOL10                      nvarchar(100)              YES
+   72  USERDEFINECOL11                      nvarchar(100)              YES
+   73  USERDEFINECOL12                      nvarchar(100)              YES
+   74  USERDEFINECOL13                      nvarchar(100)              YES
+   75  USERDEFINECOL14                      nvarchar(100)              YES
+   76  USERDEFINECOL15                      nvarchar(100)              YES
+   77  TQUANTITY                            numeric(13,5)              YES
+   78  TUNIT                                nvarchar(100)              YES
+   79  DISPATCHFLAG                         char(1)                    YES
+   80  USERDEFINECOL16                      nvarchar(100)              YES
+   81  USERDEFINECOL17                      nvarchar(100)              YES
+   82  USERDEFINECOL18                      nvarchar(100)              YES
+   83  USERDEFINECOL19                      nvarchar(100)              YES
+   84  USERDEFINECOL20                      nvarchar(100)              YES
+   85  TRANS_DATE                           float(53,None)             YES
+   86  TRANS_TIME                           float(53,None)             YES
+   87  REWORKREASON                         nvarchar(100)              YES
+   88  REWORKDESCR                          nvarchar(4000)             YES
+   89  HOLDREASON                           nvarchar(100)              YES
+   90  HOLDDESCR                            nvarchar(4000)             YES
+   91  RELEASEQTY                           numeric(13,5)              YES
+   92  DISPATCHSTAGE                        nvarchar(100)              YES
+   93  FACTORY                              nvarchar(100)              YES
+   94  MMSTIME                              nvarchar(100)              YES
+   95  RMSTIME                              nvarchar(100)              YES
+   96  EDCTIME                              nvarchar(100)              YES
+   97  TOOLTIME                             nvarchar(100)              YES
+   98  PACKTYPE                             nvarchar(100)              YES
+   99  WAIVE                                nvarchar(100)              YES
+  100  RUNBASE                              nvarchar(100)              YES
+  101  FAIFLAG                              nvarchar(100)              YES
+  102  CARRIER                              nvarchar(100)              YES
+  103  INVNO                                nvarchar(100)              YES
+  104  REPAIRCOUNT                          numeric(38,0)              YES
+  105  REPAIRFLAG                           char(1)                    YES
+  106  PICKUPNO                             nvarchar(100)              YES
+  107  RETURNMAT                            char(1)                    YES
+  108  MOVEFLAG                             nvarchar(1)                YES
+  109  OPINTERCHKINTIME                     nvarchar(200)              YES
+  110  INTERSTARTOPERSEQ                    nvarchar(200)              YES
+  111  GELPAK                               nvarchar(100)              YES
+  112  BAR                                  nvarchar(100)              YES
+  113  UTRAY                                nvarchar(100)              YES
+  114  PACKBATCH                            varchar(50)                YES
+  115  BURNTOOL                             varchar(50)                YES
+
+  SAMPLE DATA (up to 5 rows, WHERE WO = '120052817'):
+  WIP_LOT_SID          | LOT            | OPERATION  | STATUS     | QUANTITY | UNIT | RESOURCENAME | TOOL | RECIPE | SUBEQP | OPERATIONNO | OPERATIONSEQ | USERID | LASTTRANSTIME       | WIP_HIST_SID         | REWORKFLAG | REWORKCOUNT | LOCATION | PRODUCT | PRODVER | ROUTE      | ROUTEVER | LOTTYPE | CUSTOMER | DEVICE       | DEVICEVER | SQUANTITY | SUNIT | GOODDIE | FAILDIE | CUSTLOT | FABLOT | FABCODE | PRIORITY | CRITICAL | OWNER | PO   | WO        | WOSEQ | BONDED | BONDEDNO | STARTQUANTITY | STARTCOMPQTY | COMMITDATE | SCHEDULEDATE | DUEDATE | LASTOUTTIME         | CREATETIME          | STARTTIME           | SUBSTATUS | PREVIOUSRULE   | CURRENTRULE | CURRENTRULESEQ | LASTINTIME          | SITE | DIVISION | HOLDFLAG | TAG     | PREVIOUSSTATUS | LASTLOTHISTSEQ | PREVIOUSRULESEQ | USERDEFINECOL01 | USERDEFINECOL02 | USERDEFINECOL03 | USERDEFINECOL04 | USERDEFINECOL05 | USERDEFINECOL06 | USERDEFINECOL07 | USERDEFINECOL08 | USERDEFINECOL09 | USERDEFINECOL10 | USERDEFINECOL11 | USERDEFINECOL12 | USERDEFINECOL13 | USERDEFINECOL14 | USERDEFINECOL15 | TQUANTITY | TUNIT | DISPATCHFLAG | USERDEFINECOL16 | USERDEFINECOL17 | USERDEFINECOL18 | USERDEFINECOL19 | USERDEFINECOL20 | TRANS_DATE | TRANS_TIME | REWORKREASON | REWORKDESCR | HOLDREASON | HOLDDESCR | RELEASEQTY | DISPATCHSTAGE | FACTORY | MMSTIME             | RMSTIME             | EDCTIME             | TOOLTIME            | PACKTYPE | WAIVE | RUNBASE | FAIFLAG | CARRIER | INVNO | REPAIRCOUNT | REPAIRFLAG | PICKUPNO    | RETURNMAT | MOVEFLAG | OPINTERCHKINTIME | INTERSTARTOPERSEQ | GELPAK | BAR  | UTRAY | PACKBATCH | BURNTOOL
+  ---------------------+----------------+------------+------------+----------+------+--------------+------+--------+--------+-------------+--------------+--------+---------------------+----------------------+------------+-------------+----------+---------+---------+------------+----------+---------+----------+--------------+-----------+-----------+-------+---------+---------+---------+--------+---------+----------+----------+-------+------+-----------+-------+--------+----------+---------------+--------------+------------+--------------+---------+---------------------+---------------------+---------------------+-----------+----------------+-------------+----------------+---------------------+------+----------+----------+---------+----------------+----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------+-------+--------------+-----------------+-----------------+-----------------+-----------------+-----------------+------------+------------+--------------+-------------+------------+-----------+------------+---------------+---------+---------------------+---------------------+---------------------+---------------------+----------+-------+---------+---------+---------+-------+-------------+------------+-------------+-----------+----------+------------------+-------------------+--------+------+-------+-----------+---------
+  A2026050513081706398 | 12005281702-01 | COS_Plasma | Terminated | 0        | PCS  | NULL         | NULL | NULL   | NULL   | NULL        | 003          | C2352  | 2026/05/05 14:50:05 | A2026050514500474678 | N          | 0           | NULL     | 3001    | 1.0     | DR8COS0001 | 5.0      | Z102    | NULL     | 300101001611 | 1.0       | 0.00000   | NULL  | NULL    | NULL    | NULL    | NULL   | NULL    | 1.0      | Normal   | SAP   | NULL | 120052817 | NULL  | NULL   | NULL     | 2.00000       | 0.00000      | NULL       | 2026/04/29   | NULL    | 2026/05/05 13:35:25 | 2026/05/05 13:08:17 | 2026/05/05 13:08:17 | Out       | CarrierCheckIn | NULL        | 0.0            | 2026/05/05 11:59:06 | NULL | NULL     | N        | 74688.0 | Wait           | 26.0           | 1.0             | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | LINE            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL      | NULL  | N            | NULL            | NULL            | NULL            | NULL            | NULL            | 20260505.0 | 145004.0   | NULL         | NULL        | NULL       | NULL      | 0.00000    | Normal        | 1200    | 2026/04/24 11:22:28 | 2026/04/24 11:22:28 | 2026/04/24 11:22:28 | 2026/04/24 11:22:28 | Default  | NULL  | Lot     | N       | NULL    | NULL  | 0           | N          | 12005281702 | NULL      | NULL     | NULL             | NULL              | NULL   | NULL | NULL  | NULL      | NULL    
+
+
+==========================================================================================
+  TABLE : MES_WIP_COMP
+==========================================================================================
+  Row count (filtered): 24
+
+  COLUMNS (from INFORMATION_SCHEMA):
+    #  Column Name                          SQL Type                   Nullable
+  ---  -----------------------------------  -------------------------  --------
+    1  WIP_COMP_SID                         nvarchar(100)              NO
+    2  COMPONENTID                          nvarchar(100)              YES
+    3  COMPONENTQTY                         numeric(13,5)              YES
+    4  STATUS                               nvarchar(100)              YES
+    5  CREATELOT                            nvarchar(100)              YES
+    6  CURRENTLOT                           nvarchar(100)              YES
+    7  UNIT                                 nvarchar(100)              YES
+    8  EQP                                  nvarchar(100)              YES
+    9  SQUANTITY                            numeric(13,5)              YES
+   10  SUNIT                                nvarchar(100)              YES
+   11  USERID                               nvarchar(100)              YES
+   12  UPDATETIME                           nvarchar(100)              YES
+   13  PACKTYPE                             varchar(100)               YES
+   14  SN                                   nvarchar(100)              YES
+   15  DEVICE                               nvarchar(100)              YES
+   16  STORAGE                              nvarchar(100)              YES
+   17  MES_BATCHID                          nvarchar(100)              YES
+   18  LABVIEW_FLAG                         char(1)                    NO
+   19  BOXNO                                nvarchar(100)              YES
+   20  POS_X                                numeric(18,0)              YES
+   21  POS_Y                                numeric(18,0)              YES
+   22  POSITION                             nvarchar(100)              YES
+   23  DEVICEID                             nvarchar(100)              YES
+   24  WAFERID                              nvarchar(100)              YES
+   25  SORTINGACTION                        nvarchar(100)              YES
+   26  SAP_BATCHID                          nvarchar(100)              YES
+   27  DEVICETYPE                           nvarchar(100)              YES
+   28  CHIPLOT                              nvarchar(100)              YES
+   29  MMS_MLOT_SID                         nvarchar(100)              YES
+   30  TOSN                                 nvarchar(100)              YES
+   31  TOPARTNO                             nvarchar(100)              YES
+   32  CUST_SN                              nvarchar(100)              YES
+   33  CARTON                               nvarchar(100)              YES
+   34  MOVEFLAG                             nvarchar(1)                YES
+   35  TRAY                                 nvarchar(100)              YES
+   36  SMALL_BOX                            nvarchar(100)              YES
+   37  PALLET                               nvarchar(100)              YES
+   38  DEFECT_FLAG                          char(1)                    YES
+
+  SAMPLE DATA (up to 5 rows, WHERE CURRENTLOT = '12005281702'):
+  WIP_COMP_SID         | COMPONENTID    | COMPONENTQTY | STATUS | CREATELOT   | CURRENTLOT  | UNIT | EQP  | SQUANTITY | SUNIT | USERID | UPDATETIME          | PACKTYPE | SN             | DEVICE       | STORAGE | MES_BATCHID | LABVIEW_FLAG | BOXNO | POS_X | POS_Y | POSITION | DEVICEID | WAFERID   | SORTINGACTION | SAP_BATCHID | DEVICETYPE | CHIPLOT | MMS_MLOT_SID | TOSN | TOPARTNO | CUST_SN | CARTON | MOVEFLAG | TRAY     | SMALL_BOX | PALLET | DEFECT_FLAG
+  ---------------------+----------------+--------------+--------+-------------+-------------+------+------+-----------+-------+--------+---------------------+----------+----------------+--------------+---------+-------------+--------------+-------+-------+-------+----------+----------+-----------+---------------+-------------+------------+---------+--------------+------+----------+---------+--------+----------+----------+-----------+--------+------------
+  A2026042413490658513 | B13800B-N-KE22 | 1.00000      | Normal | 12005281702 | 12005281702 | PCS  | NULL | 0.00000   | NULL  | C2340  | 2026/05/05 21:22:19 | Default  | B13800B-N-KE22 | 300101001611 | 1280    | NULL        | N            | NULL  | 1     | 1     | 1        | KE22     | B13800B-N | NULL          | AOI         | COS        | NULL    | NULL         | NULL | NULL     | NULL    | NULL   | NULL     | FB-00230 | NULL      | NULL   | NULL       
+  A2026042413490658514 | B13800B-N-KE24 | 1.00000      | Normal | 12005281702 | 12005281702 | PCS  | NULL | 0.00000   | NULL  | C2340  | 2026/05/05 21:22:19 | Default  | B13800B-N-KE24 | 300101001611 | 1280    | NULL        | N            | NULL  | 2     | 1     | 2        | KE24     | B13800B-N | NULL          | AOI         | COS        | NULL    | NULL         | NULL | NULL     | NULL    | NULL   | NULL     | FB-00230 | NULL      | NULL   | NULL       
+  A2026042413490658515 | B13800B-N-KE28 | 1.00000      | Normal | 12005281702 | 12005281702 | PCS  | NULL | 0.00000   | NULL  | C2340  | 2026/05/05 21:22:19 | Default  | B13800B-N-KE28 | 300101001611 | 1280    | NULL        | N            | NULL  | 3     | 1     | 3        | KE28     | B13800B-N | NULL          | AOI         | COS        | NULL    | NULL         | NULL | NULL     | NULL    | NULL   | NULL     | FB-00230 | NULL      | NULL   | NULL       
+  A2026042413490658516 | B13800B-N-KE29 | 1.00000      | Normal | 12005281702 | 12005281702 | PCS  | NULL | 0.00000   | NULL  | C2340  | 2026/05/05 21:22:19 | Default  | B13800B-N-KE29 | 300101001611 | 1280    | NULL        | N            | NULL  | 4     | 1     | 4        | KE29     | B13800B-N | NULL          | AOI         | COS        | NULL    | NULL         | NULL | NULL     | NULL    | NULL   | NULL     | FB-00230 | NULL      | NULL   | NULL       
+  A2026042413490658517 | B13800B-N-KE32 | 1.00000      | Normal | 12005281702 | 12005281702 | PCS  | NULL | 0.00000   | NULL  | C2340  | 2026/05/05 21:22:19 | Default  | B13800B-N-KE32 | 300101001611 | 1280    | NULL        | N            | NULL  | 5     | 1     | 5        | KE32     | B13800B-N | NULL          | AOI         | COS        | NULL    | NULL         | NULL | NULL     | NULL    | NULL   | NULL     | FB-00230 | NULL      | NULL   | NULL       
+
+
+==========================================================================================
+  TABLE : MES_WIP_COMP_NONACTIVE
+==========================================================================================
+  Row count (filtered): 0
+
+  COLUMNS (from INFORMATION_SCHEMA):
+    #  Column Name                          SQL Type                   Nullable
+  ---  -----------------------------------  -------------------------  --------
+    1  WIP_COMP_SID                         nvarchar(100)              NO
+    2  COMPONENTID                          nvarchar(100)              YES
+    3  COMPONENTQTY                         numeric(13,5)              YES
+    4  STATUS                               nvarchar(100)              YES
+    5  CREATELOT                            nvarchar(100)              YES
+    6  CURRENTLOT                           nvarchar(100)              YES
+    7  UNIT                                 nvarchar(100)              YES
+    8  EQP                                  nvarchar(100)              YES
+    9  SQUANTITY                            numeric(13,5)              YES
+   10  SUNIT                                nvarchar(100)              YES
+   11  USERID                               nvarchar(100)              YES
+   12  UPDATETIME                           nvarchar(100)              YES
+   13  PACKTYPE                             varchar(100)               YES
+   14  SN                                   nvarchar(100)              YES
+   15  DEVICE                               nvarchar(100)              YES
+   16  STORAGE                              nvarchar(100)              YES
+   17  MES_BATCHID                          nvarchar(100)              YES
+   18  LABVIEW_FLAG                         char(1)                    NO
+   19  BOXNO                                nvarchar(100)              YES
+   20  POS_X                                numeric(18,0)              YES
+   21  POS_Y                                numeric(18,0)              YES
+   22  POSITION                             nvarchar(100)              YES
+   23  DEVICEID                             nvarchar(100)              YES
+   24  WAFERID                              nvarchar(100)              YES
+   25  SORTINGACTION                        nvarchar(100)              YES
+   26  SAP_BATCHID                          nvarchar(100)              YES
+   27  DEVICETYPE                           nvarchar(100)              YES
+   28  CHIPLOT                              nvarchar(100)              YES
+   29  MMS_MLOT_SID                         nvarchar(100)              YES
+   30  TOSN                                 nvarchar(100)              YES
+   31  TOPARTNO                             nvarchar(100)              YES
+   32  CUST_SN                              nvarchar(100)              YES
+   33  CARTON                               nvarchar(100)              YES
+   34  MOVEFLAG                             nvarchar(1)                YES
+   35  TRAY                                 nvarchar(100)              YES
+   36  SMALL_BOX                            nvarchar(100)              YES
+   37  PALLET                               nvarchar(100)              YES
+   38  DEFECT_FLAG                          char(1)                    YES
+
+  SAMPLE DATA (up to 5 rows, WHERE CURRENTLOT = '12005281702'):
+  (no rows returned)
+
+
+==========================================================================================
+  TABLE : MES_WIP_HIST
+==========================================================================================
+  Row count (filtered): 265
+
+  COLUMNS (from INFORMATION_SCHEMA):
+    #  Column Name                          SQL Type                   Nullable
+  ---  -----------------------------------  -------------------------  --------
+    1  WIP_HIST_SID                         nvarchar(100)              NO
+    2  LASTSID                              nvarchar(100)              YES
+    3  LOT                                  nvarchar(100)              YES
+    4  WIP_LOT_SID                          nvarchar(100)              YES
+    5  SEQUENCE                             float(53,None)             YES
+    6  ACTIVITY                             nvarchar(100)              YES
+    7  TRANSACTIONTIME                      nvarchar(100)              YES
+    8  USERID                               nvarchar(100)              YES
+    9  ATTRIBUTETYPE                        nvarchar(100)              YES
+   10  PAIRID                               nvarchar(100)              YES
+   11  WIP_COMM_SID                         nvarchar(100)              YES
+   12  ATTRIBUTE                            nvarchar(100)              YES
+   13  OLDVALUE                             nvarchar(100)              YES
+   14  NEWVALUE                             nvarchar(100)              YES
+   15  OLDQUANTITY                          numeric(13,0)              YES
+   16  NEWQUANTITY                          numeric(13,0)              YES
+   17  OLDSQUANTITY                         numeric(13,5)              YES
+   18  NEWSQUANTITY                         numeric(13,5)              YES
+   19  OLDOPERATION                         nvarchar(100)              YES
+   20  NEWOPERATION                         nvarchar(100)              YES
+   21  RESOURCENAME                         nvarchar(100)              YES
+   22  TOOL                                 nvarchar(4000)             YES
+   23  RECIPE                               nvarchar(4000)             YES
+   24  REWORKFLAG                           char(1)                    YES
+   25  UNDOFLAG                             nvarchar(100)              YES
+   26  PRODUCT                              nvarchar(100)              YES
+   27  PRODUCTVER                           float(53,None)             YES
+   28  ROUTE                                nvarchar(100)              YES
+   29  ROUTEVER                             float(53,None)             YES
+   30  LASTOUTTIME                          nvarchar(100)              YES
+   31  REMARK                               nvarchar(4000)             YES
+   32  OPERATIONSEQ                         nvarchar(100)              YES
+   33  RECTIME                              nvarchar(100)              YES
+   34  OPERATIONNO                          nvarchar(100)              YES
+   35  LINKSID                              nvarchar(100)              YES
+   36  RULENAME                             nvarchar(100)              YES
+   37  TRANSACTION                          nvarchar(100)              YES
+   38  OLDSTATUS                            nvarchar(100)              YES
+   39  NEWSTATUS                            nvarchar(100)              YES
+   40  ISSUEOPERATION                       nvarchar(100)              YES
+   41  ISSUEQTY                             numeric(13,5)              YES
+   42  ISSUESQTY                            numeric(13,5)              YES
+   43  CANCELQTY                            numeric(13,5)              YES
+   44  CANCELFLAG                           char(1)                    YES
+   45  LOTHISTSEQ                           float(53,None)             YES
+   46  CHANGEQTY                            numeric(13,5)              YES
+   47  CHANGESQTY                           numeric(13,5)              YES
+   48  SECURITYCHECK                        nvarchar(100)              YES
+   49  OLDRULE                              nvarchar(100)              YES
+   50  NEWRULE                              nvarchar(100)              YES
+   51  OLDRULESEQ                           float(53,None)             YES
+   52  NEWRULESEQ                           float(53,None)             YES
+   53  WIP_FUTUREACTION_SID                 nvarchar(100)              YES
+   54  DEVICE                               nvarchar(100)              YES
+   55  DEVICEVER                            float(53,None)             YES
+   56  USERDEFINECOL01                      nvarchar(100)              YES
+   57  USERDEFINECOL02                      nvarchar(100)              YES
+   58  USERDEFINECOL03                      nvarchar(100)              YES
+   59  USERDEFINECOL04                      nvarchar(100)              YES
+   60  USERDEFINECOL05                      nvarchar(100)              YES
+   61  USERDEFINECOL06                      nvarchar(100)              YES
+   62  USERDEFINECOL07                      nvarchar(100)              YES
+   63  USERDEFINECOL08                      nvarchar(100)              YES
+   64  USERDEFINECOL09                      nvarchar(100)              YES
+   65  USERDEFINECOL10                      nvarchar(100)              YES
+   66  USERDEFINECOL11                      nvarchar(100)              YES
+   67  USERDEFINECOL12                      nvarchar(100)              YES
+   68  USERDEFINECOL13                      nvarchar(100)              YES
+   69  USERDEFINECOL14                      nvarchar(100)              YES
+   70  USERDEFINECOL15                      nvarchar(100)              YES
+   71  USERDEFINECOL16                      nvarchar(100)              YES
+   72  USERDEFINECOL17                      nvarchar(100)              YES
+   73  USERDEFINECOL18                      nvarchar(100)              YES
+   74  USERDEFINECOL19                      nvarchar(100)              YES
+   75  USERDEFINECOL20                      nvarchar(100)              YES
+   76  OLDTQUANTITY                         numeric(13,5)              YES
+   77  NEWTQUANTITY                         numeric(13,5)              YES
+   78  OLDUNIT                              nvarchar(100)              YES
+   79  NEWUNIT                              nvarchar(100)              YES
+   80  OLDSUNIT                             nvarchar(100)              YES
+   81  NEWSUNIT                             nvarchar(100)              YES
+   82  OLDTUNIT                             nvarchar(100)              YES
+   83  NEWTUNIT                             nvarchar(100)              YES
+   84  REMARK01                             nvarchar(100)              YES
+   85  REMARK02                             nvarchar(100)              YES
+   86  REMARK03                             nvarchar(100)              YES
+   87  REMARK04                             nvarchar(100)              YES
+   88  REMARK05                             nvarchar(100)              YES
+   89  REMARK06                             nvarchar(100)              YES
+   90  REMARK07                             nvarchar(100)              YES
+   91  REMARK08                             nvarchar(100)              YES
+   92  REMARK09                             nvarchar(100)              YES
+   93  REMARK10                             nvarchar(100)              YES
+   94  REMARK11                             nvarchar(100)              YES
+   95  REMARK12                             nvarchar(100)              YES
+   96  REMARK13                             nvarchar(100)              YES
+   97  REMARK14                             nvarchar(100)              YES
+   98  REMARK15                             nvarchar(100)              YES
+   99  REMARK16                             nvarchar(100)              YES
+  100  REMARK17                             nvarchar(100)              YES
+  101  REMARK18                             nvarchar(100)              YES
+  102  REMARK19                             nvarchar(100)              YES
+  103  REMARK20                             nvarchar(100)              YES
+  104  DISPATCHFLAG                         char(1)                    YES
+  105  NEWRESOURCE                          nvarchar(100)              YES
+  106  OLDRESOURCE                          nvarchar(100)              YES
+  107  CANCELTIME                           nvarchar(100)              YES
+  108  WIP_HIST_CANCEL_SID                  nvarchar(100)              YES
+  109  HOLDREASONCATEGORY                   nvarchar(100)              YES
+  110  HOLDREASON                           nvarchar(100)              YES
+  111  HOLDDESCR                            nvarchar(4000)             YES
+  112  HOLDREASON_SID                       nvarchar(100)              YES
+  113  REWORKREASONCATEGORY                 nvarchar(100)              YES
+  114  REWORKREASON                         nvarchar(100)              YES
+  115  REWORKDESCR                          nvarchar(4000)             YES
+  116  REWORKREASON_SID                     nvarchar(100)              YES
+  117  OLDSUBSTATUS                         nvarchar(100)              YES
+  118  NEWSUBSTATUS                         nvarchar(100)              YES
+  119  TRANSACTIONSID                       nvarchar(100)              YES
+  120  DISPATCHSTAGE                        nvarchar(100)              YES
+  121  GOODDIE                              numeric(10,5)              YES
+  122  FAILDIE                              numeric(10,5)              YES
+  123  BINACTION                            nvarchar(100)              YES
+  124  BINTESTID                            nvarchar(100)              YES
+  125  BINCYCLE                             numeric(5,0)               YES
+  126  SITE                                 nvarchar(100)              YES
+  127  FACTORY                              nvarchar(100)              YES
+  128  OLDCARRIER                           nvarchar(100)              YES
+  129  NEWCARRIER                           nvarchar(100)              YES
+  130  REPAIRFLAG                           char(1)                    YES
+  131  ROWID                                uniqueidentifier           NO
+  132  GELPAK                               nvarchar(100)              YES
+  133  BAR                                  nvarchar(100)              YES
+  134  UTRAY                                nvarchar(100)              YES
+  135  PACKBATCH                            varchar(50)                YES
+
+  SAMPLE DATA (up to 5 rows, WHERE LOT = '12005281702'):
+  WIP_HIST_SID         | LASTSID              | LOT         | WIP_LOT_SID          | SEQUENCE   | ACTIVITY       | TRANSACTIONTIME     | USERID  | ATTRIBUTETYPE | PAIRID | WIP_COMM_SID | ATTRIBUTE | OLDVALUE | NEWVALUE | OLDQUANTITY | NEWQUANTITY | OLDSQUANTITY | NEWSQUANTITY | OLDOPERATION | NEWOPERATION | RESOURCENAME | TOOL | RECIPE | REWORKFLAG | UNDOFLAG | PRODUCT | PRODUCTVER | ROUTE      | ROUTEVER | LASTOUTTIME         | REMARK | OPERATIONSEQ | RECTIME             | OPERATIONNO | LINKSID              | RULENAME       | TRANSACTION     | OLDSTATUS | NEWSTATUS | ISSUEOPERATION | ISSUEQTY | ISSUESQTY | CANCELQTY | CANCELFLAG | LOTHISTSEQ | CHANGEQTY | CHANGESQTY | SECURITYCHECK | OLDRULE        | NEWRULE        | OLDRULESEQ | NEWRULESEQ | WIP_FUTUREACTION_SID | DEVICE       | DEVICEVER | USERDEFINECOL01 | USERDEFINECOL02 | USERDEFINECOL03 | USERDEFINECOL04 | USERDEFINECOL05 | USERDEFINECOL06 | USERDEFINECOL07 | USERDEFINECOL08 | USERDEFINECOL09 | USERDEFINECOL10 | USERDEFINECOL11 | USERDEFINECOL12 | USERDEFINECOL13 | USERDEFINECOL14 | USERDEFINECOL15 | USERDEFINECOL16 | USERDEFINECOL17 | USERDEFINECOL18 | USERDEFINECOL19 | USERDEFINECOL20 | OLDTQUANTITY | NEWTQUANTITY | OLDUNIT | NEWUNIT | OLDSUNIT | NEWSUNIT | OLDTUNIT | NEWTUNIT | REMARK01 | REMARK02 | REMARK03 | REMARK04 | REMARK05 | REMARK06 | REMARK07 | REMARK08 | REMARK09 | REMARK10 | REMARK11 | REMARK12 | REMARK13 | REMARK14 | REMARK15 | REMARK16 | REMARK17 | REMARK18 | REMARK19 | REMARK20 | DISPATCHFLAG | NEWRESOURCE  | OLDRESOURCE | CANCELTIME | WIP_HIST_CANCEL_SID | HOLDREASONCATEGORY | HOLDREASON | HOLDDESCR | HOLDREASON_SID | REWORKREASONCATEGORY | REWORKREASON | REWORKDESCR | REWORKREASON_SID | OLDSUBSTATUS | NEWSUBSTATUS | TRANSACTIONSID       | DISPATCHSTAGE | GOODDIE | FAILDIE | BINACTION | BINTESTID | BINCYCLE | SITE | FACTORY | OLDCARRIER | NEWCARRIER | REPAIRFLAG | ROWID                          | GELPAK | BAR  | UTRAY | PACKBATCH
+  ---------------------+----------------------+-------------+----------------------+------------+----------------+---------------------+---------+---------------+--------+--------------+-----------+----------+----------+-------------+-------------+--------------+--------------+--------------+--------------+--------------+------+--------+------------+----------+---------+------------+------------+----------+---------------------+--------+--------------+---------------------+-------------+----------------------+----------------+-----------------+-----------+-----------+----------------+----------+-----------+-----------+------------+------------+-----------+------------+---------------+----------------+----------------+------------+------------+----------------------+--------------+-----------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+--------------+--------------+---------+---------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+--------------+--------------+-------------+------------+---------------------+--------------------+------------+-----------+----------------+----------------------+--------------+-------------+------------------+--------------+--------------+----------------------+---------------+---------+---------+-----------+-----------+----------+------+---------+------------+------------+------------+--------------------------------+--------+------+-------+----------
+  A2026042413490658538 | 0                    | 12005281702 | A2026042413490658537 | 22439133.0 | CreateRunCard  | 2026/04/24 13:49:06 | C1188   | NULL          | NULL   | NULL         | NULL      | NULL     | NULL     | 122         | 122         | 0.00000      | 0.00000      | StartRuncard | StartRuncard | NULL         | NULL | NULL   | N          | NULL     | 3001    | 1.0        | DR8COS0001 | 5.0      | NULL                | NULL   | 001          | 2026/04/24 13:49:05 | NULL        | A2026042413490558412 | CreateRunCard  | CreateLot       | Create    | Create    | NULL           | NULL     | NULL      | NULL      | N          | 1.0        | NULL      | NULL       | NULL          | NULL           | StartRunCard   | 0.0        | 1.0        | NULL                 | 300101001611 | 1.0       | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | 0.00000      | 0.00000      | PCS     | PCS     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | N            | NULL         | NULL        | NULL       | NULL                | NULL               | NULL       | NULL      | NULL           | NULL                 | NULL         | NULL        | NULL             | Out          | Out          | A2026042413490658539 | Normal        | NULL    | NULL    | NULL      | NULL      | NULL     | NULL | 1200    | NULL       | NULL       | N          | 2C04BD65-2BB1-4BE8-B09B-4D4B3B | NULL   | NULL | NULL  | NULL     
+  A2026042413490658542 | A2026042413490658538 | 12005281702 | A2026042413490658537 | 22439134.0 | CreateRunCard  | 2026/04/24 13:49:06 | C1188   | NULL          | NULL   | NULL         | NULL      | NULL     | NULL     | 122         | 122         | 0.00000      | 0.00000      | StartRuncard | StartRuncard | NULL         | NULL | NULL   | N          | NULL     | 3001    | 1.0        | DR8COS0001 | 5.0      |                     |        | 001          | 2026/04/24 13:49:05 |             | A2026042413490558412 | CreateRunCard  | SetLotComponent | Create    | Create    | NULL           | NULL     | NULL      | NULL      | N          | 1.0        | NULL      | NULL       | NULL          | StartRunCard   | StartRunCard   | 1.0        | 1.0        | NULL                 | 300101001611 | 1.0       |                 |                 |                 |                 |                 |                 |                 |                 |                 |                 |                 |                 |                 |                 |                 |                 |                 |                 |                 |                 | 0.00000      | 0.00000      | PCS     | PCS     |          |          |          |          |          |          |          |          |          |          |          |          |          |          |          |          |          |          |          |          |          |          |          |          | N            |              |             | NULL       | NULL                | NULL               | NULL       | NULL      | NULL           | NULL                 | NULL         | NULL        | NULL             | Out          | Out          | A2026042413490658539 | Normal        | NULL    | NULL    | NULL      | NULL      | NULL     |      | 1200    |            |            | N          | CF998333-8485-4EA8-9D95-0709F9 | NULL   | NULL | NULL  | NULL     
+  A2026042416092128135 | A2026042413490658542 | 12005281702 | A2026042413490658537 | 22444197.0 | StartRunCard   | 2026/04/24 16:09:21 | AH60139 | NULL          | NULL   | NULL         | NULL      | NULL     | NULL     | 122         | 122         | 0.00000      | 0.00000      | StartRuncard | StartRuncard | NULL         | NULL | NULL   | N          | NULL     | 3001    | 1.0        | DR8COS0001 | 5.0      | NULL                | NULL   | 001          | 2026/04/24 16:09:21 | NULL        | A2026042416092128117 | StartRunCard   | StartLot        | Create    | Wait      | NULL           | NULL     | NULL      | NULL      | N          | 22439135.0 | NULL      | NULL       | NULL          | StartRunCard   | StartRunCard   | 1.0        | 1.0        | NULL                 | 300101001611 | 1.0       | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | 0.00000      | 0.00000      | PCS     | PCS     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | N            | NULL         | NULL        | NULL       | NULL                | NULL               | NULL       | NULL      | NULL           | NULL                 | NULL         | NULL        | NULL             | Out          | Out          | A2026042416092128138 | Normal        | NULL    | NULL    | NULL      | NULL      | NULL     | NULL | 1200    | NULL       | NULL       | N          | 508149F0-74A5-40E4-B9F0-0A6EDC | NULL   | NULL | NULL  | NULL     
+  A2026042416092128189 | A2026042416092128135 | 12005281702 | A2026042413490658537 | 22444198.0 | StartRunCard   | 2026/04/24 16:09:21 | AH60139 | NULL          | NULL   | NULL         | NULL      | NULL     | NULL     | 122         | 122         | 0.00000      | 0.00000      | StartRuncard | COS_Eutectic | NULL         | NULL | NULL   | N          | NULL     | 3001    | 1.0        | DR8COS0001 | 5.0      | 2026/04/24 16:09:21 | NULL   | 002          | 2026/04/24 16:09:21 | NULL        | A2026042416092128117 | StartRunCard   | EndOfOperation  | Wait      | Wait      | NULL           | NULL     | NULL      | NULL      | N          | 22439136.0 | NULL      | NULL       | NULL          | StartRunCard   | LabViewCheckIn | 1.0        | 1.0        | NULL                 | 300101001611 | 1.0       | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | 0.00000      | 0.00000      | PCS     | PCS     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | N            | NULL         | NULL        | NULL       | NULL                | NULL               | NULL       | NULL      | NULL           | NULL                 | NULL         | NULL        | NULL             | Out          | Out          | A2026042416092128138 | Normal        | NULL    | NULL    | NULL      | NULL      | NULL     | NULL | 1200    | NULL       | NULL       | N          | 80C4C368-433B-4D8A-9184-C7EA7F | NULL   | NULL | NULL  | NULL     
+  A2026050511590658202 | A2026042416092128189 | 12005281702 | A2026042413490658537 | 22574448.0 | RunCardCheckIn | 2026/05/05 11:59:06 | AH61404 | NULL          | NULL   | NULL         | NULL      | NULL     | NULL     | 122         | 122         | 0.00000      | 0.00000      | COS_Eutectic | COS_Eutectic | COSEutectic1 | NULL | NULL   | N          | NULL     | 3001    | 1.0        | DR8COS0001 | 5.0      | 2026/04/24 16:09:21 | NULL   | 002          | 2026/05/05 11:59:06 | NULL        | A2026050511590658199 | LabViewCheckIn | CheckIn         | Wait      | Run       | NULL           | NULL     | NULL      | NULL      | N          | 22439137.0 | NULL      | NULL       | NULL          | LabViewCheckIn | LabViewCheckIn | 1.0        | 1.0        | NULL                 | 300101001611 | 1.0       | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | 0.00000      | 0.00000      | PCS     | PCS     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | NULL     | N            | COSEutectic1 | NULL        | NULL       | NULL                | NULL               | NULL       | NULL      | NULL           | NULL                 | NULL         | NULL        | NULL             | Out          | In           | A2026050511590658203 | Normal        | NULL    | NULL    | NULL      | NULL      | NULL     | NULL | 1200    | NULL       | NULL       | N          | 0FC55C90-C423-47A9-8A8D-C4285F | NULL   | NULL | NULL  | NULL     
+
+
+==========================================================================================
+  TABLE : DM.AOI_WIP_COMP_OPERATION
+==========================================================================================
+  Row count (filtered): 846
+
+  COLUMNS (from INFORMATION_SCHEMA):
+    #  Column Name                          SQL Type                   Nullable
+  ---  -----------------------------------  -------------------------  --------
+    1  ID                                   int(10,0)                  NO
+    2  WIP_COMP_SID                         varchar(100)               NO
+    3  OPERATION                            varchar(50)                YES
+    4  STARTSEQ                             int(10,0)                  YES
+    5  ENDSEQ                               int(10,0)                  YES
+    6  BEGINSHIFT                           date                       YES
+    7  INSHIFT                              date                       YES
+    8  OUTSHIFT                             date                       YES
+    9  ENDSHIFT                             date                       YES
+   10  BEGINTIME                            datetime                   YES
+   11  INTIME                               datetime                   YES
+   12  OUTTIME                              datetime                   YES
+   13  ENDTIME                              datetime                   YES
+   14  BEGINUSERID                          varchar(50)                YES
+   15  INUSERID                             varchar(50)                YES
+   16  OUTUSERID                            varchar(50)                YES
+   17  ENDUSERID                            varchar(50)                YES
+   18  EQUIPMENT                            varchar(100)               YES
+   19  REPAIR_FLAG                          char(1)                    YES
+   20  REPAIR_REASON                        varchar(100)               YES
+   21  SCRAP_FLAG                           char(1)                    YES
+   22  SCRAP_REASON                         varchar(100)               YES
+   23  WIP_HIST_SID                         varchar(100)               YES
+   24  LOT                                  varchar(100)               YES
+   25  SEQUENCE                             int(10,0)                  YES
+   26  TRANSACTIONTIME                      datetime                   YES
+   27  TRANSACTION                          varchar(50)                YES
+   28  EXCEPTION                            char(1)                    YES
+   29  WO                                   varchar(50)                NO
+   30  COMPONENTID                          varchar(50)                NO
+   31  ROUTE                                varchar(20)                YES
+   32  ROUTEVER                             int(10,0)                  YES
+   33  OPERATIONSEQ                         varchar(10)                YES
+   34  STARTSHIFT                           date                       YES
+
+  SAMPLE DATA (up to 5 rows, WHERE WO = '120052817'):
+  ID       | WIP_COMP_SID         | OPERATION    | STARTSEQ | ENDSEQ   | BEGINSHIFT | INSHIFT | OUTSHIFT | ENDSHIFT   | BEGINTIME           | INTIME | OUTTIME | ENDTIME             | BEGINUSERID | INUSERID | OUTUSERID | ENDUSERID | EQUIPMENT | REPAIR_FLAG | REPAIR_REASON | SCRAP_FLAG | SCRAP_REASON | WIP_HIST_SID         | LOT         | SEQUENCE | TRANSACTIONTIME     | TRANSACTION    | EXCEPTION | WO        | COMPONENTID             | ROUTE      | ROUTEVER | OPERATIONSEQ | STARTSHIFT
+  ---------+----------------------+--------------+----------+----------+------------+---------+----------+------------+---------------------+--------+---------+---------------------+-------------+----------+-----------+-----------+-----------+-------------+---------------+------------+--------------+----------------------+-------------+----------+---------------------+----------------+-----------+-----------+-------------------------+------------+----------+--------------+-----------
+  10566915 | A2026042413490558415 | StartRuncard | 22439134 | 22444198 | 2026-04-24 | NULL    | NULL     | 2026-04-24 | 2026-04-24 13:49:06 | NULL   | NULL    | 2026-04-24 16:09:21 | C1188       | NULL     | NULL      | AH60139   | NULL      | NULL        | NULL          | NULL       | NULL         | A2026042416092128189 | 12005281702 | 22444198 | 2026-04-24 16:09:21 | EndOfOperation | N         | 120052817 | A2026042413490558412002 | DR8COS0001 | 5        | 002          | 2026-04-24
+  10566914 | A2026042413490558414 | StartRuncard | 22439134 | 22444198 | 2026-04-24 | NULL    | NULL     | 2026-04-24 | 2026-04-24 13:49:06 | NULL   | NULL    | 2026-04-24 16:09:21 | C1188       | NULL     | NULL      | AH60139   | NULL      | NULL        | NULL          | NULL       | NULL         | A2026042416092128189 | 12005281702 | 22444198 | 2026-04-24 16:09:21 | EndOfOperation | N         | 120052817 | A2026042413490558412001 | DR8COS0001 | 5        | 002          | 2026-04-24
+  10566916 | A2026042413490558416 | StartRuncard | 22439134 | 22444198 | 2026-04-24 | NULL    | NULL     | 2026-04-24 | 2026-04-24 13:49:06 | NULL   | NULL    | 2026-04-24 16:09:21 | C1188       | NULL     | NULL      | AH60139   | NULL      | NULL        | NULL          | NULL       | NULL         | A2026042416092128189 | 12005281702 | 22444198 | 2026-04-24 16:09:21 | EndOfOperation | N         | 120052817 | A2026042413490558412003 | DR8COS0001 | 5        | 002          | 2026-04-24
+  10566917 | A2026042413490558417 | StartRuncard | 22439134 | 22444198 | 2026-04-24 | NULL    | NULL     | 2026-04-24 | 2026-04-24 13:49:06 | NULL   | NULL    | 2026-04-24 16:09:21 | C1188       | NULL     | NULL      | AH60139   | NULL      | NULL        | NULL          | NULL       | NULL         | A2026042416092128189 | 12005281702 | 22444198 | 2026-04-24 16:09:21 | EndOfOperation | N         | 120052817 | A2026042413490558412004 | DR8COS0001 | 5        | 002          | 2026-04-24
+  10566918 | A2026042413490558418 | StartRuncard | 22439134 | 22444198 | 2026-04-24 | NULL    | NULL     | 2026-04-24 | 2026-04-24 13:49:06 | NULL   | NULL    | 2026-04-24 16:09:21 | C1188       | NULL     | NULL      | AH60139   | NULL      | NULL        | NULL          | NULL       | NULL         | A2026042416092128189 | 12005281702 | 22444198 | 2026-04-24 16:09:21 | EndOfOperation | N         | 120052817 | A2026042413490558412005 | DR8COS0001 | 5        | 002          | 2026-04-24
+
+
+==========================================================================================
+  TABLE : MES_WIP_REPAIR
+==========================================================================================
+  Row count (filtered): 3,453
+
+  COLUMNS (from INFORMATION_SCHEMA):
+    #  Column Name                          SQL Type                   Nullable
+  ---  -----------------------------------  -------------------------  --------
+    1  WIP_REPAIR_SID                       nvarchar(100)              NO
+    2  WIP_HIST_SID                         nvarchar(100)              YES
+    3  WIP_LOT_SID                          nvarchar(100)              YES
+    4  LOT                                  nvarchar(100)              YES
+    5  WIP_COMP_SID                         nvarchar(100)              YES
+    6  OPERATION                            nvarchar(100)              YES
+    7  DEFECT_REASON                        nvarchar(100)              YES
+    8  REPAIRQTY                            numeric(13,5)              YES
+    9  RESOURCENAME                         nvarchar(100)              YES
+   10  USERID                               nvarchar(100)              YES
+   11  UPDATETIME                           nvarchar(100)              YES
+   12  CANCELFLAG                           char(1)                    YES
+   13  WIP_HIST_CANCEL_SID                  nvarchar(100)              YES
+   14  DEFECT_REASONSID                     nvarchar(100)              YES
+   15  DEFECT_CATEGORY                      nvarchar(100)              YES
+   16  COMPONENTID                          nvarchar(100)              YES
+   17  POSITION                             nvarchar(100)              YES
+   18  DEFECT_REMARK                        nvarchar(100)              YES
+   19  DESCR                                nvarchar(4000)             YES
+   20  WO                                   nvarchar(50)               YES
+   21  LINE                                 nvarchar(30)               YES
+
+  SAMPLE DATA (up to 5 rows, WHERE 1=1):
+  WIP_REPAIR_SID       | WIP_HIST_SID         | WIP_LOT_SID          | LOT              | WIP_COMP_SID         | OPERATION        | DEFECT_REASON | REPAIRQTY | RESOURCENAME | USERID  | UPDATETIME          | CANCELFLAG | WIP_HIST_CANCEL_SID | DEFECT_REASONSID     | DEFECT_CATEGORY  | COMPONENTID   | POSITION | DEFECT_REMARK     | DESCR | WO        | LINE
+  ---------------------+----------------------+----------------------+------------------+----------------------+------------------+---------------+-----------+--------------+---------+---------------------+------------+---------------------+----------------------+------------------+---------------+----------+-------------------+-------+-----------+-----
+  A2025012015533746448 | A2025012015533746449 | A2025011409273850224 | S150243706896    | A2025010312041296639 | Burn-in_Pre_Test | 12011         | 1.00000   | NULL         | AH61243 | 2025/01/20 15:53:37 | N          | NULL                | A2024112015500734444 | Burn-in_Pre_Test | S150243706896 | NULL     | ReassignOperation | NULL  | 120038845 | NULL
+  A2025050317591325998 | A2025050317591326003 | A2025030413494568171 | 12004051101-0007 | A2025022714251360519 | Wire_Bonding     | 11008         | 1.00000   | NULL         | AH60206 | 2025/05/03 17:59:13 | N          | NULL                | A2024120409433928256 | Wire_Bonding     | S150244202440 | NULL     | CarrierCheckOut   | NULL  | 120040511 |     
+  A2025050317591325999 | A2025050317591326003 | A2025030413494568171 | 12004051101-0007 | A2025022714251360520 | Wire_Bonding     | 11008         | 1.00000   | NULL         | AH60206 | 2025/05/03 17:59:13 | N          | NULL                | A2024120409433928256 | Wire_Bonding     | S150244202539 | NULL     | CarrierCheckOut   | NULL  | 120040511 |     
+  A2025050317591326000 | A2025050317591326003 | A2025030413494568171 | 12004051101-0007 | A2025022714251360521 | Wire_Bonding     | 11008         | 1.00000   | NULL         | AH60206 | 2025/05/03 17:59:13 | N          | NULL                | A2024120409433928256 | Wire_Bonding     | S150244202514 | NULL     | CarrierCheckOut   | NULL  | 120040511 |     
+  A2025050317591326001 | A2025050317591326003 | A2025030413494568171 | 12004051101-0007 | A2025022714251360522 | Wire_Bonding     | 11008         | 1.00000   | NULL         | AH60206 | 2025/05/03 17:59:13 | N          | NULL                | A2024120409433928256 | Wire_Bonding     | S150244202431 | NULL     | CarrierCheckOut   | NULL  | 120040511 |     
+
+
+==========================================================================================
+  TABLE : MES_WIP_SCRAP
+==========================================================================================
+  Row count (filtered): 1,057,097
+
+  COLUMNS (from INFORMATION_SCHEMA):
+    #  Column Name                          SQL Type                   Nullable
+  ---  -----------------------------------  -------------------------  --------
+    1  WIP_SCRAP_SID                        nvarchar(100)              NO
+    2  WIP_HIST_SID                         nvarchar(100)              YES
+    3  WIP_LOT_SID                          nvarchar(100)              YES
+    4  LOT                                  nvarchar(100)              YES
+    5  OPERATION                            nvarchar(100)              YES
+    6  REASONCODE                           nvarchar(100)              YES
+    7  SCRAPQTY                             numeric(13,5)              YES
+    8  SCRAPSQTY                            numeric(13,5)              YES
+    9  RESOURCENAME                         nvarchar(100)              YES
+   10  USERID                               nvarchar(100)              YES
+   11  UPDATETIME                           nvarchar(100)              YES
+   12  SCRAPTYPE                            nvarchar(100)              YES
+   13  CANCELFLAG                           char(1)                    YES
+   14  WIP_HIST_CANCEL_SID                  nvarchar(100)              YES
+   15  REASON_SID                           nvarchar(100)              YES
+   16  REASONCATEGORY                       nvarchar(100)              YES
+   17  COMPONENTID                          nvarchar(40)               YES
+   18  WIP_COMP_SID                         nvarchar(100)              YES
+   19  DESCR                                nvarchar(4000)             YES
+
+  SAMPLE DATA (up to 5 rows, WHERE CANCELFLAG = 'N'):
+  WIP_SCRAP_SID        | WIP_HIST_SID         | WIP_LOT_SID          | LOT         | OPERATION | REASONCODE | SCRAPQTY | SCRAPSQTY | RESOURCENAME | USERID  | UPDATETIME          | SCRAPTYPE | CANCELFLAG | WIP_HIST_CANCEL_SID | REASON_SID           | REASONCATEGORY | COMPONENTID                    | WIP_COMP_SID         | DESCR
+  ---------------------+----------------------+----------------------+-------------+-----------+------------+----------+-----------+--------------+---------+---------------------+-----------+------------+---------------------+----------------------+----------------+--------------------------------+----------------------+------
+  A2014110111004217993 | A2014110111004217999 | A2014110109440298630 | 11007519301 | TOLIV12   | OTHER      | 1.00000  | 0.00000   | NULL         | AH60484 | 2014/11/01 11:00:42 | Scrap     | N          | NULL                | A200401271401401043  | Common         | 11892521-3DAD-48C4-AF5B-0760AD | A2014110109440298625 | NULL 
+  A2014110111004217994 | A2014110111004217999 | A2014110109440298630 | 11007519301 | TOLIV12   | OTHER      | 1.00000  | 0.00000   | NULL         | AH60484 | 2014/11/01 11:00:42 | Scrap     | N          | NULL                | A200401271401401043  | Common         | 1916A8E9-D0A8-4C90-B163-DA04DB | A2014110109440298626 | NULL 
+  A2014110111004217995 | A2014110111004217999 | A2014110109440298630 | 11007519301 | TOLIV12   | OTHER      | 1.00000  | 0.00000   | NULL         | AH60484 | 2014/11/01 11:00:42 | Scrap     | N          | NULL                | A200401271401401043  | Common         | 5DE910B6-6A97-4524-B5A8-9534DE | A2014110109440298627 | NULL 
+  A2014110111153023077 | A2014110111153023079 | A2014110109071588173 | 11007517501 | TOFQC     | 4412       | 1.00000  | 0.00000   | NULL         | AH60484 | 2014/11/01 11:15:30 | Scrap     | N          | NULL                | A2014101410301493551 | Labview        | 46369F6D-811E-40CF-8F13-3EC73A | A2014110109071488170 | NULL 
+  A2014110112533842437 | A2014110112533842447 | A2014110109463599580 | 11007519701 | TOLIV12   | OTHER      | 1.00000  | 0.00000   | NULL         | AH60465 | 2014/11/01 12:53:38 | Scrap     | N          | NULL                | A200401271401401043  | Common         | 548CF2C7-0B19-4F05-958E-EEFD91 | A2014110109463599571 | NULL 
+
+
+==========================================================================================
+  TABLE : MES_EQP_EQP
+==========================================================================================
+  Row count (filtered): 274
+
+  COLUMNS (from INFORMATION_SCHEMA):
+    #  Column Name                          SQL Type                   Nullable
+  ---  -----------------------------------  -------------------------  --------
+    1  EQP_EQP_SID                          nvarchar(100)              NO
+    2  EQUIPMENT                            nvarchar(100)              YES
+    3  DESCR                                nvarchar(4000)             YES
+    4  EQP_STATE_SID                        nvarchar(100)              YES
+    5  CURRENTSTATE                         nvarchar(100)              YES
+    6  EQP_TYPE_SID                         nvarchar(100)              YES
+    7  EQUIPMENTTYPE                        nvarchar(100)              YES
+    8  CAPACITY                             float(53,None)             YES
+    9  UPDATETIME                           nvarchar(100)              YES
+   10  TAG                                  float(53,None)             YES
+   11  USERID                               nvarchar(100)              YES
+   12  MAXCAPACITY                          float(53,None)             YES
+   13  MAXBATCH                             float(53,None)             YES
+   14  MAXBATCHLOT                          float(53,None)             YES
+   15  EQP_HIST_SID                         nvarchar(100)              YES
+   16  STATETIME                            nvarchar(100)              YES
+   17  STATUS                               nvarchar(100)              YES
+   18  ACTIVEFLAG                           char(1)                    YES
+   19  LASTEQPHISTSEQ                       float(53,None)             YES
+   20  USERDEFINECOL01                      nvarchar(100)              YES
+   21  USERDEFINECOL02                      nvarchar(100)              YES
+   22  USERDEFINECOL03                      nvarchar(100)              YES
+   23  USERDEFINECOL04                      nvarchar(100)              YES
+   24  USERDEFINECOL05                      nvarchar(100)              YES
+   25  USERDEFINECOL06                      nvarchar(100)              YES
+   26  USERDEFINECOL07                      nvarchar(100)              YES
+   27  USERDEFINECOL08                      nvarchar(100)              YES
+   28  USERDEFINECOL09                      nvarchar(100)              YES
+   29  USERDEFINECOL10                      nvarchar(100)              YES
+   30  USERDEFINECOL11                      nvarchar(100)              YES
+   31  USERDEFINECOL12                      nvarchar(100)              YES
+   32  USERDEFINECOL13                      nvarchar(100)              YES
+   33  USERDEFINECOL14                      nvarchar(100)              YES
+   34  USERDEFINECOL15                      nvarchar(100)              YES
+   35  USERDEFINECOL16                      nvarchar(100)              YES
+   36  USERDEFINECOL17                      nvarchar(100)              YES
+   37  USERDEFINECOL18                      nvarchar(100)              YES
+   38  USERDEFINECOL19                      nvarchar(100)              YES
+   39  USERDEFINECOL20                      nvarchar(100)              YES
+   40  USERDEFINECOL21                      nvarchar(100)              YES
+   41  USERDEFINECOL22                      nvarchar(100)              YES
+   42  USERDEFINECOL23                      nvarchar(100)              YES
+   43  USERDEFINECOL24                      nvarchar(100)              YES
+   44  USERDEFINECOL25                      nvarchar(100)              YES
+   45  USERDEFINECOL26                      nvarchar(100)              YES
+   46  USERDEFINECOL27                      nvarchar(100)              YES
+   47  USERDEFINECOL28                      nvarchar(100)              YES
+   48  USERDEFINECOL29                      nvarchar(100)              YES
+   49  USERDEFINECOL30                      nvarchar(100)              YES
+   50  LASTEVENTNAME                        nvarchar(100)              YES
+   51  LASTTRANSTIME                        nvarchar(100)              YES
+   52  LOCATION                             nvarchar(100)              YES
+   53  CREATER                              nvarchar(100)              YES
+   54  CREATETIME                           nvarchar(100)              YES
+   55  AVAILABLE                            nvarchar(2)                YES
+   56  TRANS_DATE                           float(53,None)             YES
+   57  TRANS_TIME                           numeric(38,0)              YES
+   58  DEFECTALARMVALUE                     nvarchar(100)              YES
+   59  OWNER                                nvarchar(100)              YES
+   60  IPADDRESS                            nvarchar(100)              YES
+   61  EQUIPOS                              nvarchar(100)              YES
+   62  MONITORNO                            nvarchar(100)              YES
+   63  OUTPUTALARMVALUE                     nvarchar(100)              YES
+   64  NETWORKTYPE                          nvarchar(100)              YES
+   65  MATALARMVALUE                        nvarchar(100)              YES
+   66  TOOLALARMVALUE                       nvarchar(100)              YES
+   67  SERIALNO                             nvarchar(100)              YES
+   68  STDOPERTIME                          nvarchar(100)              YES
+   69  DEPT                                 nvarchar(100)              YES
+   70  MONITORFLOOR                         nvarchar(100)              YES
+   71  CONNECTCAPABILITY                    char(1)                    YES
+   72  YIELDALARMVALUE                      nvarchar(100)              YES
+   73  SHIFT_FAI                            nvarchar(100)              YES
+   74  DEVICE_FAI                           nvarchar(100)              YES
+   75  SETUP_FAI                            nvarchar(100)              YES
+   76  IDLE_FAI                             nvarchar(100)              YES
+   77  PORTTYPE                             nvarchar(100)              YES
+   78  AUTOMATIONTYPE                       nvarchar(100)              YES
+   79  CONNECT_STATUS                       nvarchar(100)              YES
+   80  FILE_STORE_SID                       nvarchar(100)              YES
+   81  MAXQUANTITY                          float(53,None)             YES
+   82  BATCHCAPACITY                        float(53,None)             YES
+   83  QUANTITYCAPACITY                     numeric(13,5)              YES
+   84  DAY_FAI                              nvarchar(100)              YES
+   85  CONTROLEAP                           nvarchar(100)              YES
+   86  EAPIPADDRESS                         nvarchar(100)              YES
+   87  LX                                   nvarchar(100)              YES
+   88  FORMFLAG                             varchar(30)                YES
+   89  LINE                                 varchar(50)                YES
+   90  ISPINBAN                             varchar(10)                YES
+   91  FIXTUREFLAG                          varchar(50)                YES
+
+  SAMPLE DATA (up to 5 rows, WHERE 1=1):
+  EQP_EQP_SID          | EQUIPMENT    | DESCR                    | EQP_STATE_SID       | CURRENTSTATE | EQP_TYPE_SID         | EQUIPMENTTYPE      | CAPACITY | UPDATETIME          | TAG     | USERID  | MAXCAPACITY | MAXBATCH | MAXBATCHLOT | EQP_HIST_SID         | STATETIME           | STATUS | ACTIVEFLAG | LASTEQPHISTSEQ | USERDEFINECOL01 | USERDEFINECOL02 | USERDEFINECOL03 | USERDEFINECOL04 | USERDEFINECOL05 | USERDEFINECOL06 | USERDEFINECOL07 | USERDEFINECOL08 | USERDEFINECOL09 | USERDEFINECOL10 | USERDEFINECOL11 | USERDEFINECOL12 | USERDEFINECOL13 | USERDEFINECOL14 | USERDEFINECOL15 | USERDEFINECOL16 | USERDEFINECOL17 | USERDEFINECOL18 | USERDEFINECOL19 | USERDEFINECOL20 | USERDEFINECOL21 | USERDEFINECOL22 | USERDEFINECOL23 | USERDEFINECOL24 | USERDEFINECOL25 | USERDEFINECOL26 | USERDEFINECOL27 | USERDEFINECOL28 | USERDEFINECOL29 | USERDEFINECOL30 | LASTEVENTNAME | LASTTRANSTIME       | LOCATION | CREATER | CREATETIME          | AVAILABLE | TRANS_DATE | TRANS_TIME | DEFECTALARMVALUE | OWNER   | IPADDRESS | EQUIPOS | MONITORNO | OUTPUTALARMVALUE | NETWORKTYPE | MATALARMVALUE | TOOLALARMVALUE | SERIALNO | STDOPERTIME | DEPT | MONITORFLOOR | CONNECTCAPABILITY | YIELDALARMVALUE | SHIFT_FAI | DEVICE_FAI | SETUP_FAI | IDLE_FAI            | PORTTYPE | AUTOMATIONTYPE | CONNECT_STATUS | FILE_STORE_SID | MAXQUANTITY | BATCHCAPACITY | QUANTITYCAPACITY | DAY_FAI | CONTROLEAP | EAPIPADDRESS | LX                 | FORMFLAG | LINE | ISPINBAN | FIXTUREFLAG
+  ---------------------+--------------+--------------------------+---------------------+--------------+----------------------+--------------------+----------+---------------------+---------+---------+-------------+----------+-------------+----------------------+---------------------+--------+------------+----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+---------------+---------------------+----------+---------+---------------------+-----------+------------+------------+------------------+---------+-----------+---------+-----------+------------------+-------------+---------------+----------------+----------+-------------+------+--------------+-------------------+-----------------+-----------+------------+-----------+---------------------+----------+----------------+----------------+----------------+-------------+---------------+------------------+---------+------------+--------------+--------------------+----------+------+----------+------------
+  2014071712002310344  | WOConsumeEqp | NULL                     | A200209231328470147 | INITIAL      | 2014071712000110338  | ConsumeMlotEqpType | 0.0      | 2017/05/24 14:38:04 | 48413.0 | AH60648 | 0.0         | 0.0      | 0.0         | NULL                 | NULL                | Enable | T          | NULL           | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL          | NULL                | NULL     | brad    | 2014/07/17 12:00:28 | NULL      | NULL       | NULL       | NULL             | Admin   | NULL      | NULL    | NULL      | NULL             | NULL        | NULL          | NULL           | NULL     | NULL        | MFG  | NULL         | N                 | NULL            | NULL      | NULL       | N         | NULL                | NULL     | MANUAL         | NULL           | NULL           | 0.0         | 0.0           | 0.00000          | NULL    | NULL       | NULL         | ConsumeMlotEqpType | NULL     | NULL | NULL     | NULL       
+  A2017060114193830411 | ASM_DB_01    | ASM_DieBond_01, ID:0348  | A200601031934560096 | IDLE         | A2016061016073776025 | DieBond            | 0.0      | 2026/03/14 01:39:32 | 41488.0 | AH61405 | 0.0         | 0.0      | 0.0         | A2026031401393241486 | 2026/03/14 01:39:32 | Enable | T          | 66792.0        | 1               | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL          | 2026/03/14 01:39:32 | NULL     | AH60648 | 2017/06/01 14:24:28 | NULL      | 20260314.0 | 13932      | NULL             | AH60077 | NULL      | NULL    | NULL      | NULL             | NULL        | NULL          | NULL           | 348      | NULL        | OMD  | NULL         | N                 | NULL            | NULL      | NULL       | N         | 2026/03/14 01:39:32 | NULL     | MANUAL         | NULL           | NULL           | 0.0         | 0.0           | 0.00000          | NULL    | NULL       | NULL         | DieBond            | NULL     | NULL | NULL     | NULL       
+  A2017060114243630619 | ASM_DB_02    | ASM_DieBond_02, ID:1820  | A200601031934560096 | IDLE         | A2016061016073776025 | DieBond            | 0.0      | 2026/04/29 15:59:56 | 4570.0  | C2495   | 0.0         | 0.0      | 0.0         | A2026042915595604569 | 2026/04/29 15:59:56 | Enable | T          | 59218.0        | 2               | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL          | 2026/04/29 15:59:56 | NULL     | AH60648 | 2017/06/01 14:26:59 | NULL      | 20260429.0 | 155956     | NULL             | AH60077 | NULL      | NULL    | NULL      | NULL             | NULL        | NULL          | NULL           | 1820     | NULL        | OMD  | NULL         | N                 | NULL            | NULL      | NULL       | N         | 2026/04/29 15:59:56 | NULL     | MANUAL         | NULL           | NULL           | 0.0         | 0.0           | 0.00000          | NULL    | NULL       | NULL         | DieBond            | NULL     | NULL | NULL     | NULL       
+  A2017060114275830936 | ASM_WB_01    | ASM_WireBond_01, ID:0498 | A200601031934560096 | IDLE         | A2017052414485453738 | WireBond           | 0.0      | 2026/01/27 16:20:20 | 52170.0 | AH61399 | 0.0         | 0.0      | 0.0         | A2026012716202052169 | 2026/01/27 16:20:20 | Enable | T          | 364.0          | 1               | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL          | 2026/01/27 16:20:20 | NULL     | AH60648 | 2017/06/01 14:29:43 | NULL      | 20260127.0 | 162020     | NULL             | AH60077 | NULL      | NULL    | NULL      | NULL             | NULL        | NULL          | NULL           | 498      | NULL        | OMD  | NULL         | N                 | NULL            | NULL      | NULL       | N         | 2026/01/27 16:20:20 | NULL     | MANUAL         | NULL           | NULL           | 0.0         | 0.0           | 0.00000          | NULL    | NULL       | NULL         | WireBond           | NULL     | NULL | NULL     | NULL       
+  A2017060114301031079 | ASM_WB_02    | ASM_WireBond_02, ID:1819 | A200601031934560096 | IDLE         | A2017052414485453738 | WireBond           | 0.0      | 2026/04/28 12:48:34 | 42931.0 | AH61363 | 0.0         | 0.0      | 0.0         | A2026042812483442930 | 2026/04/28 12:48:34 | Enable | T          | 118214.0       | 2               | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL            | NULL          | 2026/04/28 12:48:34 | NULL     | AH60648 | 2017/06/01 14:31:29 | NULL      | 20260428.0 | 124834     | NULL             | AH60077 | NULL      | NULL    | NULL      | NULL             | NULL        | NULL          | NULL           | 1819     | NULL        | OMD  | NULL         | N                 | NULL            | NULL      | NULL       | N         | 2026/04/28 12:48:34 | NULL     | MANUAL         | NULL           | NULL           | 0.0         | 0.0           | 0.00000          | NULL    | NULL       | NULL         | WireBond           | NULL     | NULL | NULL     | NULL       
+
+
+==========================================================================================
+  TABLE : AOI_DEVICE_GROUP
+==========================================================================================
+  Row count (filtered): 86
+
+  COLUMNS (from INFORMATION_SCHEMA):
+    #  Column Name                          SQL Type                   Nullable
+  ---  -----------------------------------  -------------------------  --------
+    1  DEVICE_GROUP_SID                     nvarchar(50)               NO
+    2  DEVICE                               nvarchar(100)              NO
+    3  LDTYPE                               nvarchar(30)               YES
+    4  DEVICEGROUP                          nvarchar(50)               NO
+    5  USERID                               nvarchar(20)               NO
+    6  UPDATETIME                           datetime                   NO
+    7  DEVICE_CATE_SID                      nvarchar(50)               YES
+    8  GROUPTYPE                            varchar(50)                YES
+
+  SAMPLE DATA (up to 5 rows, WHERE 1=1):
+  DEVICE_GROUP_SID | DEVICE       | LDTYPE | DEVICEGROUP       | USERID | UPDATETIME                 | DEVICE_CATE_SID | GROUPTYPE
+  -----------------+--------------+--------+-------------------+--------+----------------------------+-----------------+----------
+  300101001591     | 300101001591 |        | 800G_2xFR4_AW_COS | brad   | 2024-12-02 10:01:35.513000 | NULL            | NULL     
+  300101001592     | 300101001592 | NULL   | 800G_2xFR4_AW_COS | brad   | 2024-12-02 10:01:35.513000 | NULL            | NULL     
+  300101001593     | 300101001593 | NULL   | 800G_2xFR4_AW_COS | brad   | 2024-12-02 10:01:35.513000 | NULL            | NULL     
+  300101001594     | 300101001594 | NULL   | 800G_2xFR4_AW_COS | brad   | 2024-12-02 10:01:35.513000 | NULL            | NULL     
+  300101001609     | 300101001609 | NULL   | 800G_2xFR4_AW_COS | brad   | 2024-12-02 10:01:35.513000 | NULL            | NULL     
+
+
+==========================================================================================
+  INFERRED TABLE RELATIONSHIPS
+==========================================================================================
+  MES_WPC_WO.WO                                      →  DM.AOI_WIP_COMP_OPERATION.WO
+  MES_WPC_WO.WO                                      →  MES_WIP_LOT.WO
+  MES_WPC_WO.WO                                      →  MES_WIP_LOT_NONACTIVE.WO
+  MES_WPC_WO.WO                                      →  MES_WIP_SCRAP.WO  (assumed)
+  MES_WPC_WO.WPC_WO_SID                              →  AOI_WO_RUNCARD.WPC_WO_SID
+  MES_WIP_LOT.LOT                                    →  MES_WIP_COMP.CURRENTLOT
+  MES_WIP_LOT.LOT                                    →  MES_WIP_COMP_NONACTIVE.CURRENTLOT
+  MES_WIP_LOT.LOT                                    →  MES_WIP_HIST.LOT
+  MES_WIP_LOT.LOT                                    →  MES_WIP_REPAIR.LOT
+  DM.AOI_WIP_COMP_OPERATION.WIP_COMP_SID             →  MES_WIP_COMP.WIP_COMP_SID  (assumed)
+  MES_EQP_EQP.SERIALNO                               →  US_SQL02.CHIPDATA.dbo.SPDEquipment.ID  (cross-server)

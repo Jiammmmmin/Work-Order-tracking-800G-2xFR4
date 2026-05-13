@@ -1,0 +1,4249 @@
+{
+  "v_MasterWOInfo": [
+    {
+      "name": "WO"
+    },
+    {
+      "name": "ROUTE"
+    },
+    {
+      "name": "WIGROUP"
+    },
+    {
+      "name": "DEVICETYPE"
+    },
+    {
+      "name": "LOTTYPE"
+    },
+    {
+      "name": "DEVICE"
+    },
+    {
+      "name": "MATERIALNO"
+    },
+    {
+      "name": "PN"
+    },
+    {
+      "name": "WOSTATUS"
+    },
+    {
+      "name": "FINISHED"
+    },
+    {
+      "name": "WOQTY"
+    },
+    {
+      "name": "WIPQTY"
+    },
+    {
+      "name": "REPAIRQTY"
+    },
+    {
+      "name": "SCRAPQTY"
+    },
+    {
+      "name": "INVQTY"
+    },
+    {
+      "name": "REWORKQTY"
+    },
+    {
+      "name": "REUSEQTY"
+    },
+    {
+      "name": "CHANGEQTY"
+    },
+    {
+      "name": "CREATEDATE"
+    },
+    {
+      "name": "STARTDATE"
+    },
+    {
+      "name": "SCHEDULEDATE"
+    }
+  ],
+  "MES_WPC_WO": [
+    {
+      "pos": 1,
+      "name": "WPC_WO_SID",
+      "type": "nvarchar(100)",
+      "nullable": "NO"
+    },
+    {
+      "pos": 2,
+      "name": "WO",
+      "type": "nvarchar(100)",
+      "nullable": "NO"
+    },
+    {
+      "pos": 3,
+      "name": "SO",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 4,
+      "name": "PO",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 5,
+      "name": "BONDED",
+      "type": "char(1)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 6,
+      "name": "BONDEDNO",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 7,
+      "name": "LOTTYPE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 8,
+      "name": "QUANTITY",
+      "type": "numeric(13,5)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 9,
+      "name": "UNIT",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 10,
+      "name": "SQUANTITY",
+      "type": "numeric(13,5)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 11,
+      "name": "SUNIT",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 12,
+      "name": "CUSTOMER",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 13,
+      "name": "CUSTLOT",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 14,
+      "name": "DEVICE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 15,
+      "name": "DEVICEVER",
+      "type": "float(53,None)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 16,
+      "name": "PRODUCT",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 17,
+      "name": "PRODVER",
+      "type": "float(53,None)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 18,
+      "name": "ROUTE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 19,
+      "name": "ROUTEVER",
+      "type": "float(53,None)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 20,
+      "name": "PRIORITY",
+      "type": "float(53,None)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 21,
+      "name": "CRITICAL",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 22,
+      "name": "OWNER",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 23,
+      "name": "COMMITDATE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 24,
+      "name": "SCHEDULEDATE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 25,
+      "name": "DUEDATE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 26,
+      "name": "USERID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 27,
+      "name": "UPDATETIME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 28,
+      "name": "TAG",
+      "type": "float(53,None)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 29,
+      "name": "FLAG",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 30,
+      "name": "TEMPLATE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 31,
+      "name": "RELEASEQTY",
+      "type": "numeric(13,5)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 32,
+      "name": "CREATETIME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 33,
+      "name": "DESCR",
+      "type": "nvarchar(4000)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 34,
+      "name": "MMSTIME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 35,
+      "name": "RMSTIME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 36,
+      "name": "EDCTIME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 37,
+      "name": "TOOLTIME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 38,
+      "name": "FACTORY",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 39,
+      "name": "STORAGE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 40,
+      "name": "STO",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 41,
+      "name": "LOEKZ",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 42,
+      "name": "IDAT2",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 43,
+      "name": "BATCHID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 44,
+      "name": "MAKTX",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 45,
+      "name": "STARTDATE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 46,
+      "name": "WIGROUP",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 47,
+      "name": "DEVICETYPE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 48,
+      "name": "PICKQTY",
+      "type": "numeric(18,0)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 49,
+      "name": "BATCHFLAG",
+      "type": "char(1)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 50,
+      "name": "PLNNR",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 51,
+      "name": "PLNAL",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 52,
+      "name": "IFC",
+      "type": "nvarchar(50)",
+      "nullable": "NO"
+    },
+    {
+      "pos": 53,
+      "name": "CONFIRMATION",
+      "type": "char(1)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 54,
+      "name": "SOLDTOPARTY",
+      "type": "nvarchar(10)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 55,
+      "name": "CABLETYPE",
+      "type": "nvarchar(40)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 56,
+      "name": "NAME1",
+      "type": "nvarchar(200)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 57,
+      "name": "CITY1",
+      "type": "nvarchar(200)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 58,
+      "name": "POSTCODE1",
+      "type": "nvarchar(20)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 59,
+      "name": "STREET",
+      "type": "nvarchar(200)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 60,
+      "name": "SHIPTOPARTY",
+      "type": "nvarchar(10)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 61,
+      "name": "PR",
+      "type": "nvarchar(50)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 62,
+      "name": "Fevor",
+      "type": "varchar(100)",
+      "nullable": "YES"
+    }
+  ],
+  "AOI_WO_RUNCARD": [
+    {
+      "pos": 1,
+      "name": "WO_RUNCARD_SID",
+      "type": "nvarchar(100)",
+      "nullable": "NO"
+    },
+    {
+      "pos": 2,
+      "name": "WPC_WO_SID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 3,
+      "name": "RUNCARD",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 4,
+      "name": "PICKTYPE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 5,
+      "name": "QUANTITY",
+      "type": "numeric(18,0)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 6,
+      "name": "STATUS",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 7,
+      "name": "STARTDATE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 8,
+      "name": "ENDDATE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 9,
+      "name": "NOTES",
+      "type": "nvarchar(-1)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 10,
+      "name": "CREATED",
+      "type": "char(1)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 11,
+      "name": "TAG",
+      "type": "numeric(18,0)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 12,
+      "name": "USERID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 13,
+      "name": "UPDATETIME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 14,
+      "name": "CREATEUSER",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 15,
+      "name": "CREATETIME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 16,
+      "name": "ROHS_66",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 17,
+      "name": "MATERIALNO",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    }
+  ],
+  "MES_WIP_LOT": [
+    {
+      "pos": 1,
+      "name": "WIP_LOT_SID",
+      "type": "nvarchar(100)",
+      "nullable": "NO"
+    },
+    {
+      "pos": 2,
+      "name": "LOT",
+      "type": "nvarchar(100)",
+      "nullable": "NO"
+    },
+    {
+      "pos": 3,
+      "name": "OPERATION",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 4,
+      "name": "STATUS",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 5,
+      "name": "QUANTITY",
+      "type": "numeric(13,0)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 6,
+      "name": "UNIT",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 7,
+      "name": "RESOURCENAME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 8,
+      "name": "TOOL",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 9,
+      "name": "RECIPE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 10,
+      "name": "SUBEQP",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 11,
+      "name": "OPERATIONNO",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 12,
+      "name": "OPERATIONSEQ",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 13,
+      "name": "USERID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 14,
+      "name": "LASTTRANSTIME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 15,
+      "name": "WIP_HIST_SID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 16,
+      "name": "REWORKFLAG",
+      "type": "char(1)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 17,
+      "name": "REWORKCOUNT",
+      "type": "numeric(38,0)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 18,
+      "name": "LOCATION",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 19,
+      "name": "PRODUCT",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 20,
+      "name": "PRODVER",
+      "type": "float(53,None)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 21,
+      "name": "ROUTE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 22,
+      "name": "ROUTEVER",
+      "type": "float(53,None)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 23,
+      "name": "LOTTYPE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 24,
+      "name": "CUSTOMER",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 25,
+      "name": "DEVICE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 26,
+      "name": "DEVICEVER",
+      "type": "float(53,None)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 27,
+      "name": "SQUANTITY",
+      "type": "numeric(13,5)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 28,
+      "name": "SUNIT",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 29,
+      "name": "GOODDIE",
+      "type": "numeric(13,5)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 30,
+      "name": "FAILDIE",
+      "type": "numeric(13,5)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 31,
+      "name": "CUSTLOT",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 32,
+      "name": "FABLOT",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 33,
+      "name": "FABCODE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 34,
+      "name": "PRIORITY",
+      "type": "float(53,None)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 35,
+      "name": "CRITICAL",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 36,
+      "name": "OWNER",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 37,
+      "name": "PO",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 38,
+      "name": "WO",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 39,
+      "name": "WOSEQ",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 40,
+      "name": "BONDED",
+      "type": "char(1)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 41,
+      "name": "BONDEDNO",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 42,
+      "name": "STARTQUANTITY",
+      "type": "numeric(13,5)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 43,
+      "name": "STARTCOMPQTY",
+      "type": "numeric(13,5)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 44,
+      "name": "COMMITDATE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 45,
+      "name": "SCHEDULEDATE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 46,
+      "name": "DUEDATE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 47,
+      "name": "LASTOUTTIME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 48,
+      "name": "CREATETIME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 49,
+      "name": "STARTTIME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 50,
+      "name": "SUBSTATUS",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 51,
+      "name": "PREVIOUSRULE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 52,
+      "name": "CURRENTRULE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 53,
+      "name": "CURRENTRULESEQ",
+      "type": "float(53,None)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 54,
+      "name": "LASTINTIME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 55,
+      "name": "SITE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 56,
+      "name": "DIVISION",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 57,
+      "name": "HOLDFLAG",
+      "type": "char(1)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 58,
+      "name": "TAG",
+      "type": "float(53,None)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 59,
+      "name": "PREVIOUSSTATUS",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 60,
+      "name": "LASTLOTHISTSEQ",
+      "type": "float(53,None)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 61,
+      "name": "PREVIOUSRULESEQ",
+      "type": "float(53,None)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 62,
+      "name": "USERDEFINECOL01",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 63,
+      "name": "USERDEFINECOL02",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 64,
+      "name": "USERDEFINECOL03",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 65,
+      "name": "USERDEFINECOL04",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 66,
+      "name": "USERDEFINECOL05",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 67,
+      "name": "USERDEFINECOL06",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 68,
+      "name": "USERDEFINECOL07",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 69,
+      "name": "USERDEFINECOL08",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 70,
+      "name": "USERDEFINECOL09",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 71,
+      "name": "USERDEFINECOL10",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 72,
+      "name": "USERDEFINECOL11",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 73,
+      "name": "USERDEFINECOL12",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 74,
+      "name": "USERDEFINECOL13",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 75,
+      "name": "USERDEFINECOL14",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 76,
+      "name": "USERDEFINECOL15",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 77,
+      "name": "TQUANTITY",
+      "type": "numeric(13,5)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 78,
+      "name": "TUNIT",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 79,
+      "name": "DISPATCHFLAG",
+      "type": "char(1)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 80,
+      "name": "USERDEFINECOL16",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 81,
+      "name": "USERDEFINECOL17",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 82,
+      "name": "USERDEFINECOL18",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 83,
+      "name": "USERDEFINECOL19",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 84,
+      "name": "USERDEFINECOL20",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 85,
+      "name": "TRANS_DATE",
+      "type": "float(53,None)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 86,
+      "name": "TRANS_TIME",
+      "type": "float(53,None)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 87,
+      "name": "REWORKREASON",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 88,
+      "name": "REWORKDESCR",
+      "type": "nvarchar(4000)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 89,
+      "name": "HOLDREASON",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 90,
+      "name": "HOLDDESCR",
+      "type": "nvarchar(4000)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 91,
+      "name": "RELEASEQTY",
+      "type": "numeric(13,5)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 92,
+      "name": "DISPATCHSTAGE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 93,
+      "name": "FACTORY",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 94,
+      "name": "MMSTIME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 95,
+      "name": "RMSTIME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 96,
+      "name": "EDCTIME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 97,
+      "name": "TOOLTIME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 98,
+      "name": "PACKTYPE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 99,
+      "name": "WAIVE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 100,
+      "name": "RUNBASE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 101,
+      "name": "FAIFLAG",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 102,
+      "name": "CARRIER",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 103,
+      "name": "INVNO",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 104,
+      "name": "REPAIRCOUNT",
+      "type": "numeric(38,0)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 105,
+      "name": "REPAIRFLAG",
+      "type": "char(1)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 106,
+      "name": "PICKUPNO",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 107,
+      "name": "RETURNMAT",
+      "type": "char(1)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 108,
+      "name": "MOVEFLAG",
+      "type": "nvarchar(1)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 109,
+      "name": "OPINTERCHKINTIME",
+      "type": "nvarchar(200)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 110,
+      "name": "INTERSTARTOPERSEQ",
+      "type": "nvarchar(200)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 111,
+      "name": "GELPAK",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 112,
+      "name": "BAR",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 113,
+      "name": "UTRAY",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 114,
+      "name": "PACKBATCH",
+      "type": "varchar(50)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 115,
+      "name": "BURNTOOL",
+      "type": "varchar(50)",
+      "nullable": "YES"
+    }
+  ],
+  "MES_WIP_LOT_NONACTIVE": [
+    {
+      "pos": 1,
+      "name": "WIP_LOT_SID",
+      "type": "nvarchar(100)",
+      "nullable": "NO"
+    },
+    {
+      "pos": 2,
+      "name": "LOT",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 3,
+      "name": "OPERATION",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 4,
+      "name": "STATUS",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 5,
+      "name": "QUANTITY",
+      "type": "numeric(13,0)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 6,
+      "name": "UNIT",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 7,
+      "name": "RESOURCENAME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 8,
+      "name": "TOOL",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 9,
+      "name": "RECIPE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 10,
+      "name": "SUBEQP",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 11,
+      "name": "OPERATIONNO",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 12,
+      "name": "OPERATIONSEQ",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 13,
+      "name": "USERID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 14,
+      "name": "LASTTRANSTIME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 15,
+      "name": "WIP_HIST_SID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 16,
+      "name": "REWORKFLAG",
+      "type": "char(1)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 17,
+      "name": "REWORKCOUNT",
+      "type": "numeric(38,0)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 18,
+      "name": "LOCATION",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 19,
+      "name": "PRODUCT",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 20,
+      "name": "PRODVER",
+      "type": "float(53,None)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 21,
+      "name": "ROUTE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 22,
+      "name": "ROUTEVER",
+      "type": "float(53,None)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 23,
+      "name": "LOTTYPE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 24,
+      "name": "CUSTOMER",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 25,
+      "name": "DEVICE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 26,
+      "name": "DEVICEVER",
+      "type": "float(53,None)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 27,
+      "name": "SQUANTITY",
+      "type": "numeric(13,5)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 28,
+      "name": "SUNIT",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 29,
+      "name": "GOODDIE",
+      "type": "numeric(13,5)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 30,
+      "name": "FAILDIE",
+      "type": "numeric(13,5)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 31,
+      "name": "CUSTLOT",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 32,
+      "name": "FABLOT",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 33,
+      "name": "FABCODE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 34,
+      "name": "PRIORITY",
+      "type": "float(53,None)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 35,
+      "name": "CRITICAL",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 36,
+      "name": "OWNER",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 37,
+      "name": "PO",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 38,
+      "name": "WO",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 39,
+      "name": "WOSEQ",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 40,
+      "name": "BONDED",
+      "type": "char(1)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 41,
+      "name": "BONDEDNO",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 42,
+      "name": "STARTQUANTITY",
+      "type": "numeric(13,5)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 43,
+      "name": "STARTCOMPQTY",
+      "type": "numeric(13,5)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 44,
+      "name": "COMMITDATE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 45,
+      "name": "SCHEDULEDATE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 46,
+      "name": "DUEDATE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 47,
+      "name": "LASTOUTTIME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 48,
+      "name": "CREATETIME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 49,
+      "name": "STARTTIME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 50,
+      "name": "SUBSTATUS",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 51,
+      "name": "PREVIOUSRULE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 52,
+      "name": "CURRENTRULE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 53,
+      "name": "CURRENTRULESEQ",
+      "type": "float(53,None)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 54,
+      "name": "LASTINTIME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 55,
+      "name": "SITE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 56,
+      "name": "DIVISION",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 57,
+      "name": "HOLDFLAG",
+      "type": "char(1)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 58,
+      "name": "TAG",
+      "type": "float(53,None)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 59,
+      "name": "PREVIOUSSTATUS",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 60,
+      "name": "LASTLOTHISTSEQ",
+      "type": "float(53,None)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 61,
+      "name": "PREVIOUSRULESEQ",
+      "type": "float(53,None)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 62,
+      "name": "USERDEFINECOL01",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 63,
+      "name": "USERDEFINECOL02",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 64,
+      "name": "USERDEFINECOL03",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 65,
+      "name": "USERDEFINECOL04",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 66,
+      "name": "USERDEFINECOL05",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 67,
+      "name": "USERDEFINECOL06",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 68,
+      "name": "USERDEFINECOL07",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 69,
+      "name": "USERDEFINECOL08",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 70,
+      "name": "USERDEFINECOL09",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 71,
+      "name": "USERDEFINECOL10",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 72,
+      "name": "USERDEFINECOL11",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 73,
+      "name": "USERDEFINECOL12",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 74,
+      "name": "USERDEFINECOL13",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 75,
+      "name": "USERDEFINECOL14",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 76,
+      "name": "USERDEFINECOL15",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 77,
+      "name": "TQUANTITY",
+      "type": "numeric(13,5)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 78,
+      "name": "TUNIT",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 79,
+      "name": "DISPATCHFLAG",
+      "type": "char(1)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 80,
+      "name": "USERDEFINECOL16",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 81,
+      "name": "USERDEFINECOL17",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 82,
+      "name": "USERDEFINECOL18",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 83,
+      "name": "USERDEFINECOL19",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 84,
+      "name": "USERDEFINECOL20",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 85,
+      "name": "TRANS_DATE",
+      "type": "float(53,None)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 86,
+      "name": "TRANS_TIME",
+      "type": "float(53,None)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 87,
+      "name": "REWORKREASON",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 88,
+      "name": "REWORKDESCR",
+      "type": "nvarchar(4000)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 89,
+      "name": "HOLDREASON",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 90,
+      "name": "HOLDDESCR",
+      "type": "nvarchar(4000)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 91,
+      "name": "RELEASEQTY",
+      "type": "numeric(13,5)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 92,
+      "name": "DISPATCHSTAGE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 93,
+      "name": "FACTORY",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 94,
+      "name": "MMSTIME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 95,
+      "name": "RMSTIME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 96,
+      "name": "EDCTIME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 97,
+      "name": "TOOLTIME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 98,
+      "name": "PACKTYPE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 99,
+      "name": "WAIVE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 100,
+      "name": "RUNBASE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 101,
+      "name": "FAIFLAG",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 102,
+      "name": "CARRIER",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 103,
+      "name": "INVNO",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 104,
+      "name": "REPAIRCOUNT",
+      "type": "numeric(38,0)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 105,
+      "name": "REPAIRFLAG",
+      "type": "char(1)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 106,
+      "name": "PICKUPNO",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 107,
+      "name": "RETURNMAT",
+      "type": "char(1)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 108,
+      "name": "MOVEFLAG",
+      "type": "nvarchar(1)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 109,
+      "name": "OPINTERCHKINTIME",
+      "type": "nvarchar(200)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 110,
+      "name": "INTERSTARTOPERSEQ",
+      "type": "nvarchar(200)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 111,
+      "name": "GELPAK",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 112,
+      "name": "BAR",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 113,
+      "name": "UTRAY",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 114,
+      "name": "PACKBATCH",
+      "type": "varchar(50)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 115,
+      "name": "BURNTOOL",
+      "type": "varchar(50)",
+      "nullable": "YES"
+    }
+  ],
+  "MES_WIP_COMP": [
+    {
+      "pos": 1,
+      "name": "WIP_COMP_SID",
+      "type": "nvarchar(100)",
+      "nullable": "NO"
+    },
+    {
+      "pos": 2,
+      "name": "COMPONENTID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 3,
+      "name": "COMPONENTQTY",
+      "type": "numeric(13,5)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 4,
+      "name": "STATUS",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 5,
+      "name": "CREATELOT",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 6,
+      "name": "CURRENTLOT",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 7,
+      "name": "UNIT",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 8,
+      "name": "EQP",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 9,
+      "name": "SQUANTITY",
+      "type": "numeric(13,5)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 10,
+      "name": "SUNIT",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 11,
+      "name": "USERID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 12,
+      "name": "UPDATETIME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 13,
+      "name": "PACKTYPE",
+      "type": "varchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 14,
+      "name": "SN",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 15,
+      "name": "DEVICE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 16,
+      "name": "STORAGE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 17,
+      "name": "MES_BATCHID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 18,
+      "name": "LABVIEW_FLAG",
+      "type": "char(1)",
+      "nullable": "NO"
+    },
+    {
+      "pos": 19,
+      "name": "BOXNO",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 20,
+      "name": "POS_X",
+      "type": "numeric(18,0)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 21,
+      "name": "POS_Y",
+      "type": "numeric(18,0)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 22,
+      "name": "POSITION",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 23,
+      "name": "DEVICEID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 24,
+      "name": "WAFERID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 25,
+      "name": "SORTINGACTION",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 26,
+      "name": "SAP_BATCHID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 27,
+      "name": "DEVICETYPE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 28,
+      "name": "CHIPLOT",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 29,
+      "name": "MMS_MLOT_SID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 30,
+      "name": "TOSN",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 31,
+      "name": "TOPARTNO",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 32,
+      "name": "CUST_SN",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 33,
+      "name": "CARTON",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 34,
+      "name": "MOVEFLAG",
+      "type": "nvarchar(1)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 35,
+      "name": "TRAY",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 36,
+      "name": "SMALL_BOX",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 37,
+      "name": "PALLET",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 38,
+      "name": "DEFECT_FLAG",
+      "type": "char(1)",
+      "nullable": "YES"
+    }
+  ],
+  "MES_WIP_COMP_NONACTIVE": [
+    {
+      "pos": 1,
+      "name": "WIP_COMP_SID",
+      "type": "nvarchar(100)",
+      "nullable": "NO"
+    },
+    {
+      "pos": 2,
+      "name": "COMPONENTID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 3,
+      "name": "COMPONENTQTY",
+      "type": "numeric(13,5)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 4,
+      "name": "STATUS",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 5,
+      "name": "CREATELOT",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 6,
+      "name": "CURRENTLOT",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 7,
+      "name": "UNIT",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 8,
+      "name": "EQP",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 9,
+      "name": "SQUANTITY",
+      "type": "numeric(13,5)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 10,
+      "name": "SUNIT",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 11,
+      "name": "USERID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 12,
+      "name": "UPDATETIME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 13,
+      "name": "PACKTYPE",
+      "type": "varchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 14,
+      "name": "SN",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 15,
+      "name": "DEVICE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 16,
+      "name": "STORAGE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 17,
+      "name": "MES_BATCHID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 18,
+      "name": "LABVIEW_FLAG",
+      "type": "char(1)",
+      "nullable": "NO"
+    },
+    {
+      "pos": 19,
+      "name": "BOXNO",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 20,
+      "name": "POS_X",
+      "type": "numeric(18,0)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 21,
+      "name": "POS_Y",
+      "type": "numeric(18,0)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 22,
+      "name": "POSITION",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 23,
+      "name": "DEVICEID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 24,
+      "name": "WAFERID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 25,
+      "name": "SORTINGACTION",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 26,
+      "name": "SAP_BATCHID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 27,
+      "name": "DEVICETYPE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 28,
+      "name": "CHIPLOT",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 29,
+      "name": "MMS_MLOT_SID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 30,
+      "name": "TOSN",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 31,
+      "name": "TOPARTNO",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 32,
+      "name": "CUST_SN",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 33,
+      "name": "CARTON",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 34,
+      "name": "MOVEFLAG",
+      "type": "nvarchar(1)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 35,
+      "name": "TRAY",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 36,
+      "name": "SMALL_BOX",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 37,
+      "name": "PALLET",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 38,
+      "name": "DEFECT_FLAG",
+      "type": "char(1)",
+      "nullable": "YES"
+    }
+  ],
+  "MES_WIP_HIST": [
+    {
+      "pos": 1,
+      "name": "WIP_HIST_SID",
+      "type": "nvarchar(100)",
+      "nullable": "NO"
+    },
+    {
+      "pos": 2,
+      "name": "LASTSID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 3,
+      "name": "LOT",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 4,
+      "name": "WIP_LOT_SID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 5,
+      "name": "SEQUENCE",
+      "type": "float(53,None)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 6,
+      "name": "ACTIVITY",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 7,
+      "name": "TRANSACTIONTIME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 8,
+      "name": "USERID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 9,
+      "name": "ATTRIBUTETYPE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 10,
+      "name": "PAIRID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 11,
+      "name": "WIP_COMM_SID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 12,
+      "name": "ATTRIBUTE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 13,
+      "name": "OLDVALUE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 14,
+      "name": "NEWVALUE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 15,
+      "name": "OLDQUANTITY",
+      "type": "numeric(13,0)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 16,
+      "name": "NEWQUANTITY",
+      "type": "numeric(13,0)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 17,
+      "name": "OLDSQUANTITY",
+      "type": "numeric(13,5)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 18,
+      "name": "NEWSQUANTITY",
+      "type": "numeric(13,5)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 19,
+      "name": "OLDOPERATION",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 20,
+      "name": "NEWOPERATION",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 21,
+      "name": "RESOURCENAME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 22,
+      "name": "TOOL",
+      "type": "nvarchar(4000)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 23,
+      "name": "RECIPE",
+      "type": "nvarchar(4000)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 24,
+      "name": "REWORKFLAG",
+      "type": "char(1)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 25,
+      "name": "UNDOFLAG",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 26,
+      "name": "PRODUCT",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 27,
+      "name": "PRODUCTVER",
+      "type": "float(53,None)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 28,
+      "name": "ROUTE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 29,
+      "name": "ROUTEVER",
+      "type": "float(53,None)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 30,
+      "name": "LASTOUTTIME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 31,
+      "name": "REMARK",
+      "type": "nvarchar(4000)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 32,
+      "name": "OPERATIONSEQ",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 33,
+      "name": "RECTIME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 34,
+      "name": "OPERATIONNO",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 35,
+      "name": "LINKSID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 36,
+      "name": "RULENAME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 37,
+      "name": "TRANSACTION",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 38,
+      "name": "OLDSTATUS",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 39,
+      "name": "NEWSTATUS",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 40,
+      "name": "ISSUEOPERATION",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 41,
+      "name": "ISSUEQTY",
+      "type": "numeric(13,5)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 42,
+      "name": "ISSUESQTY",
+      "type": "numeric(13,5)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 43,
+      "name": "CANCELQTY",
+      "type": "numeric(13,5)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 44,
+      "name": "CANCELFLAG",
+      "type": "char(1)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 45,
+      "name": "LOTHISTSEQ",
+      "type": "float(53,None)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 46,
+      "name": "CHANGEQTY",
+      "type": "numeric(13,5)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 47,
+      "name": "CHANGESQTY",
+      "type": "numeric(13,5)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 48,
+      "name": "SECURITYCHECK",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 49,
+      "name": "OLDRULE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 50,
+      "name": "NEWRULE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 51,
+      "name": "OLDRULESEQ",
+      "type": "float(53,None)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 52,
+      "name": "NEWRULESEQ",
+      "type": "float(53,None)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 53,
+      "name": "WIP_FUTUREACTION_SID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 54,
+      "name": "DEVICE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 55,
+      "name": "DEVICEVER",
+      "type": "float(53,None)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 56,
+      "name": "USERDEFINECOL01",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 57,
+      "name": "USERDEFINECOL02",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 58,
+      "name": "USERDEFINECOL03",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 59,
+      "name": "USERDEFINECOL04",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 60,
+      "name": "USERDEFINECOL05",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 61,
+      "name": "USERDEFINECOL06",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 62,
+      "name": "USERDEFINECOL07",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 63,
+      "name": "USERDEFINECOL08",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 64,
+      "name": "USERDEFINECOL09",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 65,
+      "name": "USERDEFINECOL10",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 66,
+      "name": "USERDEFINECOL11",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 67,
+      "name": "USERDEFINECOL12",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 68,
+      "name": "USERDEFINECOL13",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 69,
+      "name": "USERDEFINECOL14",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 70,
+      "name": "USERDEFINECOL15",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 71,
+      "name": "USERDEFINECOL16",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 72,
+      "name": "USERDEFINECOL17",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 73,
+      "name": "USERDEFINECOL18",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 74,
+      "name": "USERDEFINECOL19",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 75,
+      "name": "USERDEFINECOL20",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 76,
+      "name": "OLDTQUANTITY",
+      "type": "numeric(13,5)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 77,
+      "name": "NEWTQUANTITY",
+      "type": "numeric(13,5)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 78,
+      "name": "OLDUNIT",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 79,
+      "name": "NEWUNIT",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 80,
+      "name": "OLDSUNIT",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 81,
+      "name": "NEWSUNIT",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 82,
+      "name": "OLDTUNIT",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 83,
+      "name": "NEWTUNIT",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 84,
+      "name": "REMARK01",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 85,
+      "name": "REMARK02",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 86,
+      "name": "REMARK03",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 87,
+      "name": "REMARK04",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 88,
+      "name": "REMARK05",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 89,
+      "name": "REMARK06",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 90,
+      "name": "REMARK07",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 91,
+      "name": "REMARK08",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 92,
+      "name": "REMARK09",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 93,
+      "name": "REMARK10",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 94,
+      "name": "REMARK11",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 95,
+      "name": "REMARK12",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 96,
+      "name": "REMARK13",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 97,
+      "name": "REMARK14",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 98,
+      "name": "REMARK15",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 99,
+      "name": "REMARK16",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 100,
+      "name": "REMARK17",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 101,
+      "name": "REMARK18",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 102,
+      "name": "REMARK19",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 103,
+      "name": "REMARK20",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 104,
+      "name": "DISPATCHFLAG",
+      "type": "char(1)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 105,
+      "name": "NEWRESOURCE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 106,
+      "name": "OLDRESOURCE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 107,
+      "name": "CANCELTIME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 108,
+      "name": "WIP_HIST_CANCEL_SID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 109,
+      "name": "HOLDREASONCATEGORY",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 110,
+      "name": "HOLDREASON",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 111,
+      "name": "HOLDDESCR",
+      "type": "nvarchar(4000)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 112,
+      "name": "HOLDREASON_SID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 113,
+      "name": "REWORKREASONCATEGORY",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 114,
+      "name": "REWORKREASON",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 115,
+      "name": "REWORKDESCR",
+      "type": "nvarchar(4000)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 116,
+      "name": "REWORKREASON_SID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 117,
+      "name": "OLDSUBSTATUS",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 118,
+      "name": "NEWSUBSTATUS",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 119,
+      "name": "TRANSACTIONSID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 120,
+      "name": "DISPATCHSTAGE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 121,
+      "name": "GOODDIE",
+      "type": "numeric(10,5)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 122,
+      "name": "FAILDIE",
+      "type": "numeric(10,5)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 123,
+      "name": "BINACTION",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 124,
+      "name": "BINTESTID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 125,
+      "name": "BINCYCLE",
+      "type": "numeric(5,0)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 126,
+      "name": "SITE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 127,
+      "name": "FACTORY",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 128,
+      "name": "OLDCARRIER",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 129,
+      "name": "NEWCARRIER",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 130,
+      "name": "REPAIRFLAG",
+      "type": "char(1)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 131,
+      "name": "ROWID",
+      "type": "uniqueidentifier",
+      "nullable": "NO"
+    },
+    {
+      "pos": 132,
+      "name": "GELPAK",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 133,
+      "name": "BAR",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 134,
+      "name": "UTRAY",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 135,
+      "name": "PACKBATCH",
+      "type": "varchar(50)",
+      "nullable": "YES"
+    }
+  ],
+  "DM.AOI_WIP_COMP_OPERATION": [
+    {
+      "pos": 1,
+      "name": "ID",
+      "type": "int(10,0)",
+      "nullable": "NO"
+    },
+    {
+      "pos": 2,
+      "name": "WIP_COMP_SID",
+      "type": "varchar(100)",
+      "nullable": "NO"
+    },
+    {
+      "pos": 3,
+      "name": "OPERATION",
+      "type": "varchar(50)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 4,
+      "name": "STARTSEQ",
+      "type": "int(10,0)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 5,
+      "name": "ENDSEQ",
+      "type": "int(10,0)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 6,
+      "name": "BEGINSHIFT",
+      "type": "date",
+      "nullable": "YES"
+    },
+    {
+      "pos": 7,
+      "name": "INSHIFT",
+      "type": "date",
+      "nullable": "YES"
+    },
+    {
+      "pos": 8,
+      "name": "OUTSHIFT",
+      "type": "date",
+      "nullable": "YES"
+    },
+    {
+      "pos": 9,
+      "name": "ENDSHIFT",
+      "type": "date",
+      "nullable": "YES"
+    },
+    {
+      "pos": 10,
+      "name": "BEGINTIME",
+      "type": "datetime",
+      "nullable": "YES"
+    },
+    {
+      "pos": 11,
+      "name": "INTIME",
+      "type": "datetime",
+      "nullable": "YES"
+    },
+    {
+      "pos": 12,
+      "name": "OUTTIME",
+      "type": "datetime",
+      "nullable": "YES"
+    },
+    {
+      "pos": 13,
+      "name": "ENDTIME",
+      "type": "datetime",
+      "nullable": "YES"
+    },
+    {
+      "pos": 14,
+      "name": "BEGINUSERID",
+      "type": "varchar(50)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 15,
+      "name": "INUSERID",
+      "type": "varchar(50)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 16,
+      "name": "OUTUSERID",
+      "type": "varchar(50)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 17,
+      "name": "ENDUSERID",
+      "type": "varchar(50)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 18,
+      "name": "EQUIPMENT",
+      "type": "varchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 19,
+      "name": "REPAIR_FLAG",
+      "type": "char(1)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 20,
+      "name": "REPAIR_REASON",
+      "type": "varchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 21,
+      "name": "SCRAP_FLAG",
+      "type": "char(1)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 22,
+      "name": "SCRAP_REASON",
+      "type": "varchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 23,
+      "name": "WIP_HIST_SID",
+      "type": "varchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 24,
+      "name": "LOT",
+      "type": "varchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 25,
+      "name": "SEQUENCE",
+      "type": "int(10,0)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 26,
+      "name": "TRANSACTIONTIME",
+      "type": "datetime",
+      "nullable": "YES"
+    },
+    {
+      "pos": 27,
+      "name": "TRANSACTION",
+      "type": "varchar(50)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 28,
+      "name": "EXCEPTION",
+      "type": "char(1)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 29,
+      "name": "WO",
+      "type": "varchar(50)",
+      "nullable": "NO"
+    },
+    {
+      "pos": 30,
+      "name": "COMPONENTID",
+      "type": "varchar(50)",
+      "nullable": "NO"
+    },
+    {
+      "pos": 31,
+      "name": "ROUTE",
+      "type": "varchar(20)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 32,
+      "name": "ROUTEVER",
+      "type": "int(10,0)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 33,
+      "name": "OPERATIONSEQ",
+      "type": "varchar(10)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 34,
+      "name": "STARTSHIFT",
+      "type": "date",
+      "nullable": "YES"
+    }
+  ],
+  "MES_WIP_REPAIR": [
+    {
+      "pos": 1,
+      "name": "WIP_REPAIR_SID",
+      "type": "nvarchar(100)",
+      "nullable": "NO"
+    },
+    {
+      "pos": 2,
+      "name": "WIP_HIST_SID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 3,
+      "name": "WIP_LOT_SID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 4,
+      "name": "LOT",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 5,
+      "name": "WIP_COMP_SID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 6,
+      "name": "OPERATION",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 7,
+      "name": "DEFECT_REASON",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 8,
+      "name": "REPAIRQTY",
+      "type": "numeric(13,5)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 9,
+      "name": "RESOURCENAME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 10,
+      "name": "USERID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 11,
+      "name": "UPDATETIME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 12,
+      "name": "CANCELFLAG",
+      "type": "char(1)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 13,
+      "name": "WIP_HIST_CANCEL_SID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 14,
+      "name": "DEFECT_REASONSID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 15,
+      "name": "DEFECT_CATEGORY",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 16,
+      "name": "COMPONENTID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 17,
+      "name": "POSITION",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 18,
+      "name": "DEFECT_REMARK",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 19,
+      "name": "DESCR",
+      "type": "nvarchar(4000)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 20,
+      "name": "WO",
+      "type": "nvarchar(50)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 21,
+      "name": "LINE",
+      "type": "nvarchar(30)",
+      "nullable": "YES"
+    }
+  ],
+  "MES_WIP_SCRAP": [
+    {
+      "pos": 1,
+      "name": "WIP_SCRAP_SID",
+      "type": "nvarchar(100)",
+      "nullable": "NO"
+    },
+    {
+      "pos": 2,
+      "name": "WIP_HIST_SID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 3,
+      "name": "WIP_LOT_SID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 4,
+      "name": "LOT",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 5,
+      "name": "OPERATION",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 6,
+      "name": "REASONCODE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 7,
+      "name": "SCRAPQTY",
+      "type": "numeric(13,5)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 8,
+      "name": "SCRAPSQTY",
+      "type": "numeric(13,5)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 9,
+      "name": "RESOURCENAME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 10,
+      "name": "USERID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 11,
+      "name": "UPDATETIME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 12,
+      "name": "SCRAPTYPE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 13,
+      "name": "CANCELFLAG",
+      "type": "char(1)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 14,
+      "name": "WIP_HIST_CANCEL_SID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 15,
+      "name": "REASON_SID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 16,
+      "name": "REASONCATEGORY",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 17,
+      "name": "COMPONENTID",
+      "type": "nvarchar(40)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 18,
+      "name": "WIP_COMP_SID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 19,
+      "name": "DESCR",
+      "type": "nvarchar(4000)",
+      "nullable": "YES"
+    }
+  ],
+  "MES_EQP_EQP": [
+    {
+      "pos": 1,
+      "name": "EQP_EQP_SID",
+      "type": "nvarchar(100)",
+      "nullable": "NO"
+    },
+    {
+      "pos": 2,
+      "name": "EQUIPMENT",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 3,
+      "name": "DESCR",
+      "type": "nvarchar(4000)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 4,
+      "name": "EQP_STATE_SID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 5,
+      "name": "CURRENTSTATE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 6,
+      "name": "EQP_TYPE_SID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 7,
+      "name": "EQUIPMENTTYPE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 8,
+      "name": "CAPACITY",
+      "type": "float(53,None)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 9,
+      "name": "UPDATETIME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 10,
+      "name": "TAG",
+      "type": "float(53,None)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 11,
+      "name": "USERID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 12,
+      "name": "MAXCAPACITY",
+      "type": "float(53,None)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 13,
+      "name": "MAXBATCH",
+      "type": "float(53,None)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 14,
+      "name": "MAXBATCHLOT",
+      "type": "float(53,None)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 15,
+      "name": "EQP_HIST_SID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 16,
+      "name": "STATETIME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 17,
+      "name": "STATUS",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 18,
+      "name": "ACTIVEFLAG",
+      "type": "char(1)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 19,
+      "name": "LASTEQPHISTSEQ",
+      "type": "float(53,None)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 20,
+      "name": "USERDEFINECOL01",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 21,
+      "name": "USERDEFINECOL02",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 22,
+      "name": "USERDEFINECOL03",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 23,
+      "name": "USERDEFINECOL04",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 24,
+      "name": "USERDEFINECOL05",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 25,
+      "name": "USERDEFINECOL06",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 26,
+      "name": "USERDEFINECOL07",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 27,
+      "name": "USERDEFINECOL08",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 28,
+      "name": "USERDEFINECOL09",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 29,
+      "name": "USERDEFINECOL10",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 30,
+      "name": "USERDEFINECOL11",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 31,
+      "name": "USERDEFINECOL12",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 32,
+      "name": "USERDEFINECOL13",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 33,
+      "name": "USERDEFINECOL14",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 34,
+      "name": "USERDEFINECOL15",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 35,
+      "name": "USERDEFINECOL16",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 36,
+      "name": "USERDEFINECOL17",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 37,
+      "name": "USERDEFINECOL18",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 38,
+      "name": "USERDEFINECOL19",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 39,
+      "name": "USERDEFINECOL20",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 40,
+      "name": "USERDEFINECOL21",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 41,
+      "name": "USERDEFINECOL22",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 42,
+      "name": "USERDEFINECOL23",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 43,
+      "name": "USERDEFINECOL24",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 44,
+      "name": "USERDEFINECOL25",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 45,
+      "name": "USERDEFINECOL26",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 46,
+      "name": "USERDEFINECOL27",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 47,
+      "name": "USERDEFINECOL28",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 48,
+      "name": "USERDEFINECOL29",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 49,
+      "name": "USERDEFINECOL30",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 50,
+      "name": "LASTEVENTNAME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 51,
+      "name": "LASTTRANSTIME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 52,
+      "name": "LOCATION",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 53,
+      "name": "CREATER",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 54,
+      "name": "CREATETIME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 55,
+      "name": "AVAILABLE",
+      "type": "nvarchar(2)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 56,
+      "name": "TRANS_DATE",
+      "type": "float(53,None)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 57,
+      "name": "TRANS_TIME",
+      "type": "numeric(38,0)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 58,
+      "name": "DEFECTALARMVALUE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 59,
+      "name": "OWNER",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 60,
+      "name": "IPADDRESS",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 61,
+      "name": "EQUIPOS",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 62,
+      "name": "MONITORNO",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 63,
+      "name": "OUTPUTALARMVALUE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 64,
+      "name": "NETWORKTYPE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 65,
+      "name": "MATALARMVALUE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 66,
+      "name": "TOOLALARMVALUE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 67,
+      "name": "SERIALNO",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 68,
+      "name": "STDOPERTIME",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 69,
+      "name": "DEPT",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 70,
+      "name": "MONITORFLOOR",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 71,
+      "name": "CONNECTCAPABILITY",
+      "type": "char(1)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 72,
+      "name": "YIELDALARMVALUE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 73,
+      "name": "SHIFT_FAI",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 74,
+      "name": "DEVICE_FAI",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 75,
+      "name": "SETUP_FAI",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 76,
+      "name": "IDLE_FAI",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 77,
+      "name": "PORTTYPE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 78,
+      "name": "AUTOMATIONTYPE",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 79,
+      "name": "CONNECT_STATUS",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 80,
+      "name": "FILE_STORE_SID",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 81,
+      "name": "MAXQUANTITY",
+      "type": "float(53,None)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 82,
+      "name": "BATCHCAPACITY",
+      "type": "float(53,None)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 83,
+      "name": "QUANTITYCAPACITY",
+      "type": "numeric(13,5)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 84,
+      "name": "DAY_FAI",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 85,
+      "name": "CONTROLEAP",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 86,
+      "name": "EAPIPADDRESS",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 87,
+      "name": "LX",
+      "type": "nvarchar(100)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 88,
+      "name": "FORMFLAG",
+      "type": "varchar(30)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 89,
+      "name": "LINE",
+      "type": "varchar(50)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 90,
+      "name": "ISPINBAN",
+      "type": "varchar(10)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 91,
+      "name": "FIXTUREFLAG",
+      "type": "varchar(50)",
+      "nullable": "YES"
+    }
+  ],
+  "AOI_DEVICE_GROUP": [
+    {
+      "pos": 1,
+      "name": "DEVICE_GROUP_SID",
+      "type": "nvarchar(50)",
+      "nullable": "NO"
+    },
+    {
+      "pos": 2,
+      "name": "DEVICE",
+      "type": "nvarchar(100)",
+      "nullable": "NO"
+    },
+    {
+      "pos": 3,
+      "name": "LDTYPE",
+      "type": "nvarchar(30)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 4,
+      "name": "DEVICEGROUP",
+      "type": "nvarchar(50)",
+      "nullable": "NO"
+    },
+    {
+      "pos": 5,
+      "name": "USERID",
+      "type": "nvarchar(20)",
+      "nullable": "NO"
+    },
+    {
+      "pos": 6,
+      "name": "UPDATETIME",
+      "type": "datetime",
+      "nullable": "NO"
+    },
+    {
+      "pos": 7,
+      "name": "DEVICE_CATE_SID",
+      "type": "nvarchar(50)",
+      "nullable": "YES"
+    },
+    {
+      "pos": 8,
+      "name": "GROUPTYPE",
+      "type": "varchar(50)",
+      "nullable": "YES"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+# =============================================================================
+# Work Order Tracking — 800G 2xFR4  |  Python runtime requirements
+# =============================================================================
+#
+# Summary (what this app does):
+# - Desktop app (PyQt6) for 800G 2xFR4 work-order tracking: query MES by date
+#   or WO list, show Summary KPIs, WO Schedule matrix, Process Yield analytics,
+#   and Station Information + editable process config.
+# - Charts use matplotlib embedded in Qt (FigureCanvasQTAgg / backend_qtagg).
+# - Live data: SQL Server MES via pyodbc; if unreachable, demo data is used.
+# - Excel: openpyxl reads/writes data/station_config.xlsx (process targets).
+#
+# Install (from this folder or project root, adjust path if needed):
+#   pip install -r requirements.txt
+#
+# =============================================================================
+
+PyQt6>=6.6.0
+matplotlib>=3.8.0
+pyodbc>=5.0.0
+openpyxl>=3.1.0

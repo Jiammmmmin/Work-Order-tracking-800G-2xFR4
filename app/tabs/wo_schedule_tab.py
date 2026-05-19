@@ -21,12 +21,12 @@ Bottom — Matrix table (self.table):
     7  WO Input / Out        — qty_in (green) | qty_out (green)
     8  WIP / Fail            — 0 (grey)       | scrap+repair (orange)
     9  Yield                 — yield% (colored, merged)
-   10  Target / Actual       — Target qty = UPH×mach×shift; StartRuncard: Target = WO Qty in
-   11  Efficiency            — Pass÷Target×100; StartRuncard: Out÷In×100% (tooltip shows Out/In)
+   10  Target / Actual       — Target qty = UPH×mach×shift; TOTAL × query days
+   11  Efficiency            — Pass÷Target×100; TOTAL Target uses query days; per-WO: one shift
 """
 
 from collections import defaultdict
-from datetime import datetime
+from datetime import date, datetime
 from typing import List, Dict, Optional
 
 from PyQt6.QtWidgets import (
@@ -173,6 +173,15 @@ class WOScheduleTab(QWidget):
         ph = max(float(plan_shift_hrs or 0.0), 0.0)
         return max(lh, wh * nm, ph * nm)
 
+    @staticmethod
+    def _query_calendar_days(start_date: Optional[date], end_date: Optional[date]) -> int:
+        """Inclusive calendar days from the user query Start–End dates."""
+        if start_date is None or end_date is None:
+            return 1
+        if end_date < start_date:
+            return 1
+        return (end_date - start_date).days + 1
+
     def __init__(self, parent=None):
         super().__init__(parent)
         self._build_ui()
@@ -247,7 +256,10 @@ class WOScheduleTab(QWidget):
         )
         wo_op_wip   = self._compute_wip(lot_ops, lots)
         self._build_summary(wos, ops_ordered, wo_op_agg, wo_lots)
-        self._build_matrix(wos, ops_ordered, wo_op_agg, wo_lots, wo_op_wip, product_type)
+        self._build_matrix(
+            wos, ops_ordered, wo_op_agg, wo_lots, wo_op_wip, product_type,
+            start_date=start_date, end_date=end_date,
+        )
 
     def reset(self):
         self._scroll.hide()
@@ -447,7 +459,7 @@ class WOScheduleTab(QWidget):
         t.setItem(0, 2, _c(_fmt_dt(max(all_ge)) if all_ge else "", bg=_CLR_TOTALS_BG, font=bold))
         for ci, op in enumerate(ops_ordered):
             c = 3 + ci; g = grand.get(op)
-            if not g or (g["units"] == 0 and g.get("carry_in", 0) == 0):
+            if not g or g["units"] == 0:
                 t.setItem(0, c, _c("", bg=_CLR_TOTALS_BG)); continue
             completed = (g["units"] - g.get("range_wip", 0)) + g.get("carry_in", 0)
             pu = max(0, completed - g["scrap"] - g["repair"])
@@ -476,7 +488,7 @@ class WOScheduleTab(QWidget):
             t.setItem(row, 2, _c(_fmt_dt(max(all_e)) if all_e else "—"))
             for ci, op in enumerate(ops_ordered):
                 c = 3 + ci; agg = agg_by_op.get(op)
-                if not agg or (agg["units"]==0 and agg.get("carry_in",0)==0):
+                if not agg or agg["units"] == 0:
                     t.setItem(row, c, _c("")); continue
                 completed = (agg["units"] - agg.get("range_wip", 0)) + agg.get("carry_in", 0)
                 pu = max(0, completed - agg["scrap"] - agg["repair"])
@@ -496,7 +508,17 @@ class WOScheduleTab(QWidget):
 
     # ── Matrix table ──────────────────────────────────────────────────────────
 
-    def _build_matrix(self, wos, ops_ordered, wo_op_agg, wo_lots, wo_op_wip, product_type=""):
+    def _build_matrix(
+        self,
+        wos,
+        ops_ordered,
+        wo_op_agg,
+        wo_lots,
+        wo_op_wip,
+        product_type="",
+        start_date: Optional[date] = None,
+        end_date: Optional[date] = None,
+    ):
         """Excel-style: rows = metrics, columns = processes (3 sub-cols each)."""
         t = self.table
         try:
@@ -563,6 +585,8 @@ class WOScheduleTab(QWidget):
             for op, cnt in wo_wip.items():
                 grand_wip[op] += cnt
 
+        query_days = self._query_calendar_days(start_date, end_date)
+
         self._insert_wo_block(
             t, n_cols, bold, sm_b, wo_fnt, ops_ordered,
             header_text=(f"  TOTAL    "
@@ -574,6 +598,9 @@ class WOScheduleTab(QWidget):
             agg_by_op=grand_agg,
             wip_by_op=dict(grand_wip),
             product_type=product_type,
+            target_query_days=query_days,
+            query_start=start_date,
+            query_end=end_date,
         )
 
         # Separator after grand total
@@ -688,6 +715,7 @@ class WOScheduleTab(QWidget):
                     up_it.setToolTip(uph_tip)
                 t.setItem(first_r + _R_ACT_UPH, lc, up_it)
 
+            tqd = meta.get("target_query_days")
             self._fill_derived_cells(
                 t, first_r, lc, mc, bold,
                 target_uph, n_machines, cfg_work_hrs,
@@ -697,6 +725,9 @@ class WOScheduleTab(QWidget):
                 lot_hours=lot_hours,
                 operation_name=str(meta.get("operation", "") or ""),
                 units_in=int(meta.get("units", 0) or 0),
+                target_query_days=int(tqd) if tqd is not None else None,
+                query_start=meta.get("query_start"),
+                query_end=meta.get("query_end"),
             )
         finally:
             t.blockSignals(False)
@@ -717,18 +748,26 @@ class WOScheduleTab(QWidget):
         lot_hours: float = 0.0,
         operation_name: str = "",
         units_in: int = 0,
+        target_query_days: Optional[int] = None,
+        query_start: Optional[date] = None,
+        query_end: Optional[date] = None,
     ):
         """Fill Expected Work Hours, Target (lc), and Efficiency.
 
         StartRuncard: Target = WO Qty in; Efficiency = Out ÷ In × 100% (same as Yield for this step);
         tooltip shows Out / In counts. No time-based KPI rows.
 
-        Other ops: Target qty = Target UPH × # machines × Expected Work Hours (one nominal shift).
+        Per-WO ops: Target qty = Target UPH × # machines × Expected Work Hours (one nominal shift).
+        TOTAL row only: Target qty also × target_query_days (user query Start–End, inclusive).
         Efficiency = Pass ÷ Target qty × 100.
 
         Actual UPH row uses completed ÷ _uph_capacity_hours (lot / capped wall / shift).
         Wall and per-lot MES spans are first capped to calendar days × station Work Hours.
         """
+        qd_total = max(int(target_query_days or 0), 1) if target_query_days is not None else None
+        q_range = ""
+        if query_start and query_end:
+            q_range = f" ({query_start} … {query_end})"
         is_sr = (operation_name or "").strip() == _OP_START_RUNCARD
 
         if is_sr:
@@ -779,7 +818,11 @@ class WOScheduleTab(QWidget):
             plan_h = max(float(cfg_work_hrs or 0.0), 0.0)
 
             if plan_h > 0:
-                target_qty = round(target_uph * n_machines * plan_h)
+                shift_target = round(target_uph * n_machines * plan_h)
+                if qd_total is not None:
+                    target_qty = shift_target * qd_total
+                else:
+                    target_qty = shift_target
 
                 ta_item = QTableWidgetItem(f"{target_qty:,}" if target_qty > 0 else "—")
                 ta_item.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -797,11 +840,19 @@ class WOScheduleTab(QWidget):
                 actual_uph = (completed / cap_h) if cap_h > 0 else 0.0
                 if target_qty > 0:
                     eff = round(pass_u / target_qty * 100, 1)
-                    e_tip = (
-                        f"Pass {pass_u:,} ÷ Target qty {target_qty:,} × 100\n"
-                        f"(Target qty = Target UPH × machines × {plan_h:.2f} h shift)\n"
-                        f"Actual UPH (ref): {actual_uph:,.2f} (finished ÷ cap_h={cap_h:.3f} h)"
-                    )
+                    if qd_total is not None:
+                        e_tip = (
+                            f"TOTAL — Pass {pass_u:,} ÷ Target qty {target_qty:,} × 100\n"
+                            f"Target = UPH × machines × {plan_h:.2f} h/shift × {qd_total} query day(s){q_range}\n"
+                            f"(= {shift_target:,}/shift × {qd_total} days)\n"
+                            f"Actual UPH (ref): {actual_uph:,.2f} (finished ÷ cap_h={cap_h:.3f} h)"
+                        )
+                    else:
+                        e_tip = (
+                            f"Pass {pass_u:,} ÷ Target qty {target_qty:,} × 100\n"
+                            f"(Target qty = Target UPH × machines × {plan_h:.2f} h shift)\n"
+                            f"Actual UPH (ref): {actual_uph:,.2f} (finished ÷ cap_h={cap_h:.3f} h)"
+                        )
                     e_fg = _CLR_PASS if eff >= 100 else (_CLR_IN_PROG if eff >= 80 else _CLR_FAIL_FG)
                     e_bg = "#E8F5E9" if eff >= 100 else ("#FFF3E0" if eff >= 80 else "#FFEBEE")
                     eff_item = QTableWidgetItem(f"{eff:.1f}%")
@@ -858,6 +909,9 @@ class WOScheduleTab(QWidget):
         agg_by_op: Dict[str, dict],
         wip_by_op: Optional[Dict[str, int]] = None,
         product_type: str = "",
+        target_query_days: Optional[int] = None,
+        query_start: Optional[date] = None,
+        query_end: Optional[date] = None,
     ):
         def _ro(text, fg=None, bg=None, font=None, align=Qt.AlignmentFlag.AlignCenter, tooltip=""):
             """Read-only table item."""
@@ -980,6 +1034,10 @@ class WOScheduleTab(QWidget):
                 "cfg_work_hrs": _wh_val,
                 "lot_hours": float(agg.get("lot_hours", 0.0) or 0.0),
             }
+            if target_query_days is not None:
+                base_meta["target_query_days"] = max(int(target_query_days), 1)
+                base_meta["query_start"] = query_start
+                base_meta["query_end"] = query_end
 
             # Row 0 — Target UPH (editable, spans all 3, pre-filled from config)
             t.setSpan(first_r + _R_TARGET_UPH, lc, 1, 3)
@@ -1096,4 +1154,9 @@ class WOScheduleTab(QWidget):
                 lot_hours=float(agg.get("lot_hours", 0.0) or 0.0),
                 operation_name=op,
                 units_in=int(units),
+                target_query_days=(
+                    max(int(target_query_days), 1) if target_query_days is not None else None
+                ),
+                query_start=query_start,
+                query_end=query_end,
             )

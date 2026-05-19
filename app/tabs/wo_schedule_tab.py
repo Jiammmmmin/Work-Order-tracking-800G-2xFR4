@@ -16,14 +16,13 @@ Bottom — Matrix table (self.table):
     2  Expected Work Hours   — blank
     3  Target Start / End    — blank | blank
     4  Actual Start / End    — MIN(BEGINTIME) | MAX(ENDTIME)
-    5  Actual Work Hours     — calculated (merged)
-    6  Actual UPH            — calculated (merged)
+    5  Actual Work Hours     — MIN→MAX capped by calendar days×shift; StartRuncard: —
+    6  Actual UPH            — finished ÷ max(Σ lot h, wall×mach, shift×mach); StartRuncard: —
     7  WO Input / Out        — qty_in (green) | qty_out (green)
     8  WIP / Fail            — 0 (grey)       | scrap+repair (orange)
     9  Yield                 — yield% (colored, merged)
-   10  Target / Actual       — Target qty uses max(wall span, Σ per-lot hours) × UPH × machines
-                              (parallel lots inflate Σ hours so Efficiency stays sane); …
-   11  Efficiency            — Actual ÷ Target × 100; Target uses capacity hours above
+   10  Target / Actual       — Target qty = UPH×mach×shift; StartRuncard: Target = WO Qty in
+   11  Efficiency            — Pass÷Target×100; StartRuncard: Out÷In×100% (tooltip shows Out/In)
 """
 
 from collections import defaultdict
@@ -43,6 +42,15 @@ from ..backend.data_models import (
 )
 from ..utils.constants import TARGET_YIELD
 from ..utils import process_config
+
+# MES route step — no line UPH; Target = WO Qty in, Efficiency shows Out/In.
+_OP_START_RUNCARD = "StartRuncard"
+
+
+def _hours_per_day_for_op(product_type: str, op_name: str) -> float:
+    row = process_config.get(product_type, op_name) or {}
+    h = float(row.get("work_hours", process_config._DEFAULT_WH) or 0.0)
+    return h if h > 0 else float(process_config._DEFAULT_WH)
 
 # ── Colours ───────────────────────────────────────────────────────────────────
 _CLR_WO_HDR_BG  = "#1565C0"
@@ -118,6 +126,53 @@ def _hhmm(hours: float) -> str:
 
 
 class WOScheduleTab(QWidget):
+    @staticmethod
+    def _calendar_days_inclusive(t0: datetime, t1: datetime) -> int:
+        """Inclusive calendar-day count from first start date to last end date."""
+        if t1 <= t0:
+            return 1
+        return (t1.date() - t0.date()).days + 1
+
+    @staticmethod
+    def _scheduled_duration_cap_hours(
+        t0: Optional[datetime],
+        t1: Optional[datetime],
+        raw_hours: float,
+        hours_per_day: float,
+    ) -> float:
+        """Cap a raw hour span so each calendar day counts at most ``hours_per_day``.
+
+        MES BEGINTIME→ENDTIME can span nights idle; this matches “only count ~7 h per day”
+        for KPI denominators without using INTIME/OUTTIME.
+        """
+        raw = max(float(raw_hours or 0.0), 0.0)
+        hpd = max(float(hours_per_day or 0.0), 0.0)
+        if hpd <= 0:
+            hpd = float(process_config._DEFAULT_WH)
+        if t0 is None or t1 is None:
+            return raw
+        try:
+            if t1 <= t0:
+                return min(raw, hpd)
+            n_days = WOScheduleTab._calendar_days_inclusive(t0, t1)
+        except (TypeError, AttributeError):
+            return raw
+        return min(raw, float(n_days) * hpd)
+
+    @staticmethod
+    def _uph_capacity_hours(
+        work_hrs: float,
+        lot_hours: float,
+        n_machines: float,
+        plan_shift_hrs: float = 0.0,
+    ) -> float:
+        """Denominator hours for Actual UPH: max(Σ lot_hours, work_hrs×machines, shift×machines)."""
+        nm = max(float(n_machines or 0.0), 1.0)
+        wh = max(float(work_hrs or 0.0), 0.0)
+        lh = max(float(lot_hours or 0.0), 0.0)
+        ph = max(float(plan_shift_hrs or 0.0), 0.0)
+        return max(lh, wh * nm, ph * nm)
+
     def __init__(self, parent=None):
         super().__init__(parent)
         self._build_ui()
@@ -182,14 +237,15 @@ class WOScheduleTab(QWidget):
         op_history = result.operation_history
         lots       = result.lot_tracking
         lot_ops    = result.lot_operations
+        product_type = params.product_type if params else ""
 
         ops_ordered = self._route_order(op_history)
         lot_op_map  = self._build_lot_op_map(lot_ops)
         wo_lots     = self._filter_lots(lots, lot_op_map, start_date, end_date)
-        wo_op_agg   = self._aggregate(wos, wo_lots, lot_op_map, op_history, start_date, end_date)
+        wo_op_agg   = self._aggregate(
+            wos, wo_lots, lot_op_map, op_history, start_date, end_date, product_type
+        )
         wo_op_wip   = self._compute_wip(lot_ops, lots)
-
-        product_type = params.product_type if params else ""
         self._build_summary(wos, ops_ordered, wo_op_agg, wo_lots)
         self._build_matrix(wos, ops_ordered, wo_op_agg, wo_lots, wo_op_wip, product_type)
 
@@ -248,7 +304,7 @@ class WOScheduleTab(QWidget):
         return wo_lots
 
     def _aggregate(self, wos, wo_lots, lot_op_map, op_history,
-                   start_date=None, end_date=None) -> Dict[str, Dict[str, dict]]:
+                   start_date=None, end_date=None, product_type: str = "") -> Dict[str, Dict[str, dict]]:
         """Per-WO per-operation aggregation.
 
         Inclusion: start_time OR end_time within [start_date, end_date].
@@ -257,9 +313,9 @@ class WOScheduleTab(QWidget):
         carry_in  — started before range but completed in range (adds to N Out, not N In)
         range_wip — started in range but not completed in range
         scrap / repair — attributed only to lots that completed in range
-        lot_hours — sum over contributing (lot,op) rows of (end_time - start_time) in hours;
-                    used with wall-clock span so Target/Efficiency are not underestimated when
-                    many lots run in parallel (wall time << total line-hours).
+        lot_hours — sum over contributing (lot,op) of min(raw step hours,
+                    #calendar_days(start,end) × station Work Hours for that op);
+                    parallel lots still add; each step is capped vs 24/7 soak.
         """
         def _dt_in_range(dt) -> bool:
             if dt is None:
@@ -289,8 +345,12 @@ class WOScheduleTab(QWidget):
                     agg["splits"] += 1
 
                     if lo.start_time and lo.end_time:
-                        dh = (lo.end_time - lo.start_time).total_seconds() / 3600.0
-                        if dh > 0:
+                        dh_raw = (lo.end_time - lo.start_time).total_seconds() / 3600.0
+                        if dh_raw > 0:
+                            hpd = _hours_per_day_for_op(product_type, op_name)
+                            dh = WOScheduleTab._scheduled_duration_cap_hours(
+                                lo.start_time, lo.end_time, dh_raw, hpd
+                            )
                             agg["lot_hours"] += dh
 
                     if start_ok:
@@ -482,12 +542,20 @@ class WOScheduleTab(QWidget):
         for wo_agg in wo_op_agg.values():
             for op, agg in wo_agg.items():
                 g = grand_agg.setdefault(op, {
-                    "units": 0, "scrap": 0, "repair": 0,
+                    "units": 0, "carry_in": 0, "range_wip": 0,
+                    "scrap": 0, "repair": 0,
                     "starts": [], "ends": [], "equipment": set(),
+                    "lot_hours": 0.0,
                 })
-                g["units"]  += agg["units"];  g["scrap"]  += agg["scrap"]
-                g["repair"] += agg["repair"]; g["starts"] += agg["starts"]
-                g["ends"]   += agg["ends"];   g["equipment"] |= agg["equipment"]
+                g["units"]      += agg["units"]
+                g["carry_in"]   += agg.get("carry_in", 0)
+                g["range_wip"]  += agg.get("range_wip", 0)
+                g["scrap"]      += agg["scrap"]
+                g["repair"]     += agg["repair"]
+                g["starts"]     += agg["starts"]
+                g["ends"]       += agg["ends"]
+                g["equipment"]  |= agg["equipment"]
+                g["lot_hours"]  += float(agg.get("lot_hours", 0.0) or 0.0)
 
         # Aggregate WIP across all WOs per operation
         grand_wip: Dict[str, int] = defaultdict(int)
@@ -560,9 +628,18 @@ class WOScheduleTab(QWidget):
         lc           = meta["lc"]
         mc           = meta["mc"]
         first_r      = meta["first_r"]
-        cfg_work_hrs = meta.get("cfg_work_hrs", 8.0)
+        cfg_work_hrs = meta.get("cfg_work_hrs", process_config._DEFAULT_WH)
         pass_u       = meta["pass_u"]
-        work_hrs     = float(meta.get("work_hrs") or 0.0)
+        completed    = int(meta.get("completed", pass_u))
+        work_hrs_raw = meta.get("work_hrs_raw")
+        ws           = meta.get("wall_start")
+        we           = meta.get("wall_end")
+        if work_hrs_raw is not None and ws is not None and we is not None:
+            work_hrs = WOScheduleTab._scheduled_duration_cap_hours(
+                ws, we, float(work_hrs_raw), float(cfg_work_hrs or 0.0)
+            )
+        else:
+            work_hrs     = float(meta.get("work_hrs") or 0.0)
 
         lot_hours    = float(meta.get("lot_hours") or 0.0)
 
@@ -576,14 +653,50 @@ class WOScheduleTab(QWidget):
 
         target_uph = _read_float(first_r + _R_TARGET_UPH, lc)
         n_machines = _read_float(first_r + _R_MACHINE,     lc)
+        op_name = str(meta.get("operation", "") or "")
+        is_sr = op_name.strip() == _OP_START_RUNCARD
 
         t.blockSignals(True)
         try:
+            nm = max(float(n_machines or 0.0), 1.0)
+            # Row 6 — keep in sync when Target UPH or # machines is edited
+            t.setSpan(first_r + _R_ACT_UPH, lc, 1, 3)
+            if is_sr:
+                up_it = QTableWidgetItem("—")
+                up_it.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
+                up_it.setFlags(Qt.ItemFlag.ItemIsEnabled | Qt.ItemFlag.ItemIsSelectable)
+                up_it.setToolTip("StartRuncard — no Actual UPH; Efficiency shows Out÷In as % (see tooltip).")
+                t.setItem(first_r + _R_ACT_UPH, lc, up_it)
+            else:
+                den = WOScheduleTab._uph_capacity_hours(work_hrs, lot_hours, nm, cfg_work_hrs)
+                if den > 0:
+                    uph_val = completed / den
+                    uph_text = f"{uph_val:,.1f}"
+                    uph_tip = (
+                        "Finished ÷ max(Σ lot h, wall×mach, shift×mach).\n"
+                        f"Finished = {completed:,} ÷ cap_h = {den:.3f} h\n"
+                        f"(Σ lot = {lot_hours:.3f}; wall×mach = {work_hrs*nm:.3f}; "
+                        f"shift×mach = {cfg_work_hrs*nm:.3f})"
+                    )
+                else:
+                    uph_text = "—"
+                    uph_tip = ""
+                up_it = QTableWidgetItem(uph_text)
+                up_it.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
+                up_it.setFlags(Qt.ItemFlag.ItemIsEnabled | Qt.ItemFlag.ItemIsSelectable)
+                if uph_tip:
+                    up_it.setToolTip(uph_tip)
+                t.setItem(first_r + _R_ACT_UPH, lc, up_it)
+
             self._fill_derived_cells(
                 t, first_r, lc, mc, bold,
-                target_uph, n_machines, cfg_work_hrs, pass_u,
+                target_uph, n_machines, cfg_work_hrs,
+                completed=completed,
+                pass_u=pass_u,
                 actual_work_hrs=work_hrs,
                 lot_hours=lot_hours,
+                operation_name=str(meta.get("operation", "") or ""),
+                units_in=int(meta.get("units", 0) or 0),
             )
         finally:
             t.blockSignals(False)
@@ -598,17 +711,63 @@ class WOScheduleTab(QWidget):
         target_uph: Optional[float],
         n_machines: Optional[float],
         cfg_work_hrs: float,
+        completed: int,
         pass_u: int,
         actual_work_hrs: float = 0.0,
         lot_hours: float = 0.0,
+        operation_name: str = "",
+        units_in: int = 0,
     ):
         """Fill Expected Work Hours, Target (lc), and Efficiency.
 
-        Expected Work Hours still use *configured* shift length (Station Information).
-        Target qty uses capacity hours = max(wall span, sum of per-lot process hours) so
-        parallel lots (many line-hours in a short wall-clock window) do not shrink the
-        denominator. Then Target = Target UPH × machines × capacity hours.
+        StartRuncard: Target = WO Qty in; Efficiency = Out ÷ In × 100% (same as Yield for this step);
+        tooltip shows Out / In counts. No time-based KPI rows.
+
+        Other ops: Target qty = Target UPH × # machines × Expected Work Hours (one nominal shift).
+        Efficiency = Pass ÷ Target qty × 100.
+
+        Actual UPH row uses completed ÷ _uph_capacity_hours (lot / capped wall / shift).
+        Wall and per-lot MES spans are first capped to calendar days × station Work Hours.
         """
+        is_sr = (operation_name or "").strip() == _OP_START_RUNCARD
+
+        if is_sr:
+            t.setSpan(first_r + _R_EXP_HRS, lc, 1, 3)
+            exp_item = QTableWidgetItem("—")
+            exp_item.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
+            exp_item.setFlags(Qt.ItemFlag.ItemIsEnabled | Qt.ItemFlag.ItemIsSelectable)
+            t.setItem(first_r + _R_EXP_HRS, lc, exp_item)
+
+            n_in = max(int(units_in or 0), 0)
+            ta_item = QTableWidgetItem(f"{n_in:,}" if n_in > 0 else "—")
+            ta_item.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
+            ta_item.setBackground(QColor(_CLR_LABEL_BG))
+            ta_item.setFlags(Qt.ItemFlag.ItemIsEnabled | Qt.ItemFlag.ItemIsSelectable)
+            t.setItem(first_r + _R_TGT_ACTUAL, lc, ta_item)
+
+            t.setSpan(first_r + _R_EFFICIENCY, lc, 1, 3)
+            if n_in > 0:
+                eff_pct = round(pass_u / n_in * 100, 1)
+                eff_item = QTableWidgetItem(f"{eff_pct:.1f}%")
+                eff_item.setToolTip(
+                    f"StartRuncard — Out ÷ In × 100 = {eff_pct:.1f}%\n"
+                    f"Out / In = {pass_u:,} / {n_in:,}\n"
+                    f"Target (left) = Qty in = {n_in:,}. No time-based throughput KPI for this step."
+                )
+                e_fg = _CLR_PASS if eff_pct >= 100 else (_CLR_IN_PROG if eff_pct >= 80 else _CLR_FAIL_FG)
+                e_bg = "#E8F5E9" if eff_pct >= 100 else ("#FFF3E0" if eff_pct >= 80 else "#FFEBEE")
+            else:
+                eff_item = QTableWidgetItem("—")
+                e_fg, e_bg = "#757575", "#F5F5F5"
+            eff_item.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
+            eff_item.setForeground(QColor(e_fg))
+            eff_item.setBackground(QColor(e_bg))
+            eff_item.setFont(bold)
+            eff_item.setFlags(Qt.ItemFlag.ItemIsEnabled | Qt.ItemFlag.ItemIsSelectable)
+            t.setItem(first_r + _R_EFFICIENCY, lc, eff_item)
+            _ = mc
+            return
+
         if target_uph and target_uph > 0 and n_machines and n_machines > 0:
             # Expected Work Hours = configured shift hours from Station Information
             t.setSpan(first_r + _R_EXP_HRS, lc, 1, 3)
@@ -617,11 +776,10 @@ class WOScheduleTab(QWidget):
             exp_item.setFlags(Qt.ItemFlag.ItemIsEnabled | Qt.ItemFlag.ItemIsSelectable)
             t.setItem(first_r + _R_EXP_HRS, lc, exp_item)
 
-            capacity_hrs = max(float(actual_work_hrs or 0.0), float(lot_hours or 0.0))
+            plan_h = max(float(cfg_work_hrs or 0.0), 0.0)
 
-            if capacity_hrs > 0:
-                # Target output for capacity hours (wall vs summed lot durations)
-                target_qty = round(target_uph * n_machines * capacity_hrs)
+            if plan_h > 0:
+                target_qty = round(target_uph * n_machines * plan_h)
 
                 ta_item = QTableWidgetItem(f"{target_qty:,}" if target_qty > 0 else "—")
                 ta_item.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -630,12 +788,24 @@ class WOScheduleTab(QWidget):
                 t.setItem(first_r + _R_TGT_ACTUAL, lc, ta_item)
 
                 t.setSpan(first_r + _R_EFFICIENCY, lc, 1, 3)
+                cap_h = WOScheduleTab._uph_capacity_hours(
+                    float(actual_work_hrs or 0.0),
+                    float(lot_hours or 0.0),
+                    float(n_machines or 0.0),
+                    plan_h,
+                )
+                actual_uph = (completed / cap_h) if cap_h > 0 else 0.0
                 if target_qty > 0:
                     eff = round(pass_u / target_qty * 100, 1)
-                    # 100% = produced exactly the time-based expectation (not yield %)
+                    e_tip = (
+                        f"Pass {pass_u:,} ÷ Target qty {target_qty:,} × 100\n"
+                        f"(Target qty = Target UPH × machines × {plan_h:.2f} h shift)\n"
+                        f"Actual UPH (ref): {actual_uph:,.2f} (finished ÷ cap_h={cap_h:.3f} h)"
+                    )
                     e_fg = _CLR_PASS if eff >= 100 else (_CLR_IN_PROG if eff >= 80 else _CLR_FAIL_FG)
                     e_bg = "#E8F5E9" if eff >= 100 else ("#FFF3E0" if eff >= 80 else "#FFEBEE")
                     eff_item = QTableWidgetItem(f"{eff:.1f}%")
+                    eff_item.setToolTip(e_tip)
                 else:
                     eff_item = QTableWidgetItem("—")
                     e_fg, e_bg = "#757575", "#F5F5F5"
@@ -646,7 +816,7 @@ class WOScheduleTab(QWidget):
                 eff_item.setFlags(Qt.ItemFlag.ItemIsEnabled | Qt.ItemFlag.ItemIsSelectable)
                 t.setItem(first_r + _R_EFFICIENCY, lc, eff_item)
             else:
-                # No measurable capacity — cannot align Target/Efficiency
+                # No shift length — cannot align Target/Efficiency
                 clr_t = QTableWidgetItem("—")
                 clr_t.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
                 clr_t.setBackground(QColor(_CLR_LABEL_BG))
@@ -689,7 +859,7 @@ class WOScheduleTab(QWidget):
         wip_by_op: Optional[Dict[str, int]] = None,
         product_type: str = "",
     ):
-        def _ro(text, fg=None, bg=None, font=None, align=Qt.AlignmentFlag.AlignCenter):
+        def _ro(text, fg=None, bg=None, font=None, align=Qt.AlignmentFlag.AlignCenter, tooltip=""):
             """Read-only table item."""
             item = QTableWidgetItem(text)
             item.setTextAlignment(align)
@@ -697,6 +867,8 @@ class WOScheduleTab(QWidget):
             if fg:   item.setForeground(QColor(fg))
             if bg:   item.setBackground(QColor(bg))
             if font: item.setFont(font)
+            if tooltip:
+                item.setToolTip(tooltip)
             return item
 
         def _ed(text, meta=None, tooltip=""):
@@ -778,23 +950,33 @@ class WOScheduleTab(QWidget):
             min_st  = min(starts) if starts else None
             max_end = max(ends)   if ends   else None
 
-            if min_st and max_end:
-                work_hrs = (max_end - min_st).total_seconds() / 3600
-            else:
-                work_hrs = 0.0
-
-            proc_yield = round(pass_u / units * 100, 1) if units else 0.0
-
-            # Look up saved config for this process
             _cfg      = process_config.get(product_type, op) or {}
             _uph_val  = _cfg.get("target_uph",  process_config._DEFAULT_UPH)
             _mac_val  = _cfg.get("machines",     process_config._DEFAULT_MACHINES)
             _wh_val   = _cfg.get("work_hours",   process_config._DEFAULT_WH)
+            _hpd      = float(_wh_val or 0.0) or float(process_config._DEFAULT_WH)
+
+            if min_st and max_end:
+                work_hrs_raw = (max_end - min_st).total_seconds() / 3600
+                work_hrs = WOScheduleTab._scheduled_duration_cap_hours(
+                    min_st, max_end, work_hrs_raw, _hpd
+                )
+            else:
+                work_hrs_raw = 0.0
+                work_hrs = 0.0
+
+            proc_yield = round(pass_u / units * 100, 1) if units else 0.0
 
             # Metadata for live recalc (stored in editable cells)
             base_meta = {
                 "lc": lc, "mc": mc, "rc": rc, "first_r": first_r,
-                "work_hrs": work_hrs, "units": units, "pass_u": pass_u,
+                "operation": op,
+                "work_hrs": work_hrs,
+                "work_hrs_raw": work_hrs_raw,
+                "wall_start": min_st,
+                "wall_end": max_end,
+                "units": units, "pass_u": pass_u,
+                "completed": completed,
                 "cfg_work_hrs": _wh_val,
                 "lot_hours": float(agg.get("lot_hours", 0.0) or 0.0),
             }
@@ -824,17 +1006,54 @@ class WOScheduleTab(QWidget):
             t.setItem(first_r + _R_ACTUAL_SE, lc, _ro(_fmt_dt(min_st)))
             t.setItem(first_r + _R_ACTUAL_SE, rc, _ro(_fmt_dt(max_end) if max_end else "—"))
 
-            # Row 5 — Actual Work Hours (spans all 3)
+            # Row 5 — Actual Work Hours (spans all 3); StartRuncard: no time KPI
             t.setSpan(first_r + _R_ACT_HRS, lc, 1, 3)
-            t.setItem(first_r + _R_ACT_HRS, lc,
-                      _ro(_hhmm(work_hrs) if work_hrs > 0 else "—"))
+            if op == _OP_START_RUNCARD:
+                act_h_item = _ro(
+                    "—",
+                    tooltip="StartRuncard is administrative — Actual Work Hours not used for KPIs.",
+                )
+            elif work_hrs > 0:
+                _n_cal = WOScheduleTab._calendar_days_inclusive(min_st, max_end) if min_st and max_end else 1
+                _hrs_tip = (
+                    f"Counted: min(raw span, {_n_cal} calendar day(s) × {_hpd:g} h/day from station Work Hours). "
+                    f"Raw MIN→MAX = {_hhmm(work_hrs_raw)} → shown {_hhmm(work_hrs)}."
+                )
+                act_h_item = _ro(_hhmm(work_hrs), tooltip=_hrs_tip)
+            else:
+                act_h_item = _ro("—")
+            t.setItem(first_r + _R_ACT_HRS, lc, act_h_item)
 
-            # Row 6 — Actual UPH (spans all 3)
+            # Row 6 — Actual UPH; StartRuncard: no time KPI
             t.setSpan(first_r + _R_ACT_UPH, lc, 1, 3)
-            uph_text = f"{units / work_hrs:,.1f}" if work_hrs > 0 else "—"
-            t.setItem(first_r + _R_ACT_UPH, lc, _ro(uph_text))
+            if op == _OP_START_RUNCARD:
+                t.setItem(
+                    first_r + _R_ACT_UPH,
+                    lc,
+                    _ro(
+                        "—",
+                        tooltip="StartRuncard — no Actual UPH; Efficiency = Out÷In×100% (counts in tooltip).",
+                    ),
+                )
+            else:
+                _nm = max(float(_mac_val or 0.0), 1.0)
+                _lh = float(agg.get("lot_hours", 0.0) or 0.0)
+                _den = WOScheduleTab._uph_capacity_hours(work_hrs, _lh, _nm, _wh_val)
+                if _den > 0:
+                    uph_val = completed / _den
+                    uph_text = f"{uph_val:,.1f}"
+                    uph_tip = (
+                        "Finished ÷ max(Σ lot h, wall×mach, shift×mach).\n"
+                        f"Finished = {completed:,} ÷ cap_h = {_den:.3f} h\n"
+                        f"(Σ lot = {_lh:.3f}; wall×mach = {work_hrs*_nm:.3f}; "
+                        f"shift×mach = {_wh_val*_nm:.3f})"
+                    )
+                else:
+                    uph_text = "—"
+                    uph_tip = ""
+                t.setItem(first_r + _R_ACT_UPH, lc, _ro(uph_text, tooltip=uph_tip))
 
-            # Row 7 — Input / Out  (lc = input green, mc+rc = output green)
+            # Row 7 — WO Input / Out  (lc = input green, mc+rc = output green)
             t.setItem(first_r + _R_INPUT_OUT, lc,
                       _ro(f"{units:,}", bg=_CLR_IN_GREEN, font=bold))
             t.setSpan(first_r + _R_INPUT_OUT, mc, 1, 2)
@@ -870,7 +1089,11 @@ class WOScheduleTab(QWidget):
             # Pre-fill Expected Hours / Target / Efficiency using config values
             self._fill_derived_cells(
                 t, first_r, lc, mc, bold,
-                _uph_val, float(_mac_val), _wh_val, pass_u,
+                _uph_val, float(_mac_val), _wh_val,
+                completed=completed,
+                pass_u=pass_u,
                 actual_work_hrs=work_hrs,
                 lot_hours=float(agg.get("lot_hours", 0.0) or 0.0),
+                operation_name=op,
+                units_in=int(units),
             )

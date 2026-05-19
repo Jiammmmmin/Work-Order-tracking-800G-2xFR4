@@ -8,6 +8,8 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Dict, List, Optional, Set
 
+from .station_defaults_2xfr4 import BUILTIN_BY_PRODUCT
+
 _DATA_DIR   = Path(__file__).parent.parent.parent / "data"
 _EXCEL_PATH = _DATA_DIR / "station_config.xlsx"
 
@@ -16,40 +18,87 @@ _CONFIG: Dict[str, Dict[str, dict]] = {}
 
 _DEFAULT_UPH      = 10.0
 _DEFAULT_MACHINES = 1
-_DEFAULT_WH       = 8.0
+_DEFAULT_WH       = 7.0
+
+
+def _merge_row_from_builtin(cfg_row: dict, b: dict) -> None:
+    cfg_row["target_uph"] = float(b["target_uph"])
+    cfg_row["machines"] = int(b["machines"])
+    cfg_row["work_hours"] = float(b["work_hours"])
+    cfg_row.setdefault("equipment", set())
+
+
+def apply_builtin_stations() -> None:
+    """Apply planning-sheet defaults (Target UPH, machines, 7h shift) for COS / BOSA / TTX."""
+    for ptype, pmap in BUILTIN_BY_PRODUCT.items():
+        cfg = _CONFIG.setdefault(ptype, {})
+        for op, b in pmap.items():
+            cur = cfg.setdefault(
+                op,
+                {
+                    "target_uph": _DEFAULT_UPH,
+                    "machines": _DEFAULT_MACHINES,
+                    "work_hours": _DEFAULT_WH,
+                    "equipment": set(),
+                },
+            )
+            _merge_row_from_builtin(cur, b)
+            cur.setdefault("equipment", set())
+
+
+def overlay_builtin_for_operations(product_type: str, operations: List[str]) -> None:
+    """Re-apply built-in UPH / machines / hours after MES merge (overrides equipment-derived machine count)."""
+    pmap = BUILTIN_BY_PRODUCT.get(product_type)
+    if not pmap:
+        return
+    cfg = _CONFIG.setdefault(product_type, {})
+    for op in operations:
+        if op not in pmap:
+            continue
+        cur = cfg.setdefault(
+            op,
+            {
+                "target_uph": _DEFAULT_UPH,
+                "machines": _DEFAULT_MACHINES,
+                "work_hours": _DEFAULT_WH,
+                "equipment": set(),
+            },
+        )
+        _merge_row_from_builtin(cur, pmap[op])
+        cur.setdefault("equipment", set())
 
 
 def load() -> None:
     """Read all sheets from the Excel file into the in-memory cache."""
     global _CONFIG
     _CONFIG = {}
-    if not _EXCEL_PATH.exists():
-        return
-    try:
-        import openpyxl
-        wb = openpyxl.load_workbook(_EXCEL_PATH, read_only=True, data_only=True)
-        for sheet_name in wb.sheetnames:
-            ws = wb[sheet_name]
-            _CONFIG.setdefault(sheet_name, {})
-            for row in ws.iter_rows(min_row=2, values_only=True):
-                if not row or row[0] is None:
-                    continue
-                op       = str(row[0]).strip()
-                tgt_uph  = float(row[1]) if row[1] not in (None, "") else _DEFAULT_UPH
-                machines = int(row[2])   if row[2] not in (None, "") else _DEFAULT_MACHINES
-                eq_raw   = str(row[3]).strip() if len(row) > 3 and row[3] else ""
-                equipment = {e.strip() for e in eq_raw.split(",") if e.strip()} if eq_raw else set()
-                work_hrs = float(row[4]) if len(row) > 4 and row[4] not in (None, "") else _DEFAULT_WH
-                if op:
-                    _CONFIG[sheet_name][op] = {
-                        "target_uph": tgt_uph,
-                        "machines":   machines,
-                        "equipment":  equipment,
-                        "work_hours": work_hrs,
-                    }
-        wb.close()
-    except Exception:
-        _CONFIG = {}
+    if _EXCEL_PATH.exists():
+        try:
+            import openpyxl
+            wb = openpyxl.load_workbook(_EXCEL_PATH, read_only=True, data_only=True)
+            for sheet_name in wb.sheetnames:
+                ws = wb[sheet_name]
+                _CONFIG.setdefault(sheet_name, {})
+                for row in ws.iter_rows(min_row=2, values_only=True):
+                    if not row or row[0] is None:
+                        continue
+                    op       = str(row[0]).strip()
+                    tgt_uph  = float(row[1]) if row[1] not in (None, "") else _DEFAULT_UPH
+                    machines = int(row[2])   if row[2] not in (None, "") else _DEFAULT_MACHINES
+                    eq_raw   = str(row[3]).strip() if len(row) > 3 and row[3] else ""
+                    equipment = {e.strip() for e in eq_raw.split(",") if e.strip()} if eq_raw else set()
+                    work_hrs = float(row[4]) if len(row) > 4 and row[4] not in (None, "") else _DEFAULT_WH
+                    if op:
+                        _CONFIG[sheet_name][op] = {
+                            "target_uph": tgt_uph,
+                            "machines":   machines,
+                            "equipment":  equipment,
+                            "work_hours": work_hrs,
+                        }
+            wb.close()
+        except Exception:
+            _CONFIG = {}
+    apply_builtin_stations()
 
 
 def save(product_type: str, ops_data: Dict[str, dict]) -> None:
@@ -138,3 +187,4 @@ def merge_operations(
                 entry["equipment"] |= new_eq
                 # Use DB equipment count as the machine count
                 entry["machines"] = len(entry["equipment"])
+    overlay_builtin_for_operations(product_type, operations)

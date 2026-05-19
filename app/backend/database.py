@@ -19,8 +19,10 @@ _OPERATIONS = {
     ],
     "COS": [
         "StartRuncard", "COS_Eutectic", "COS_Plasma", "COS_Wire_Bonding",
-        "COS_Fixture_Assembly", "COS_Burn-in_Before", "COS_Burn-in_Test",
-        "COS_Alignment", "COS_UV_Cure", "COS_Final_Test", "COS_Inspection",
+        "COS_Fixture_Assembly", "COS_Fixture_Disassembly_Unloading",
+        "COS_Burn-in_Before", "COS_Burn-in_Test", "COS_Burn-in_After",
+        "COS_Alignment", "COS_UV_Cure", "COS_Final_Test",
+        "COS_OQC", "INVT_Hoop", "COS_Inspection",
     ],
     "TTX": [
         "StartRuncard", "TTX_Assembly", "TTX_Baking",
@@ -32,6 +34,9 @@ _OPERATIONS = {
 _EQUIPMENT = {
     "COS_Eutectic": "COSEutectic1", "COS_Wire_Bonding": "COSWireBonding1",
     "COS_Burn-in_Before": "COSBurnin1", "COS_Burn-in_Test": "COSBurnin2",
+    "COS_Burn-in_After": "COSBurnin2",
+    "COS_Fixture_Disassembly_Unloading": "COSFixture1",
+    "COS_OQC": "COSOQC1", "INVT_Hoop": "COSInvt1",
     "RX_DB": "DBBonder1", "COB_WB": "WireBonder1",
 }
 
